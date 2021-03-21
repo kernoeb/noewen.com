@@ -96,7 +96,7 @@
               </div>
               <v-container>
                 <v-row class="d-flex justify-center align-center">
-                  <v-col cols="12" lg="7">
+                  <v-col cols="12" lg="8">
                     <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
                       <v-card-title>PlanningIUT</v-card-title>
                       <v-card-subtitle>Planning universitaire réalisé en Nuxt.js</v-card-subtitle>
@@ -116,7 +116,7 @@
                       </v-card-text>
                     </v-card>
                   </v-col>
-                  <v-col cols="12" lg="7">
+                  <v-col cols="12" lg="8">
                     <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
                       <v-card-title>Géobtenu</v-card-title>
                       <v-card-subtitle>Ressource de géographie pour GeoGuessr réalisée en Nuxt.js</v-card-subtitle>
