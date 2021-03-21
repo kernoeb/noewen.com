@@ -1,62 +1,63 @@
 <template>
-  <v-carousel
-    v-model="model"
-    vertical
-    hide-delimiter-background
-    hide-delimiters
-    :show-arrows="false"
-    height="100vh"
-    progress-color="white"
-    :continuous="false"
-  >
-    <v-carousel-item
-      v-for="(color, i) in colors"
-      :key="color"
-    >
-      <v-sheet
-        :color="color"
-        height="100%"
-        tile
-      >
-        <div
-          class="fill-height justify-center align-center d-flex text-center noselect"
-        >
-          <div class="display-3">
-            {{ values[i] }}
+  <div>
+    <client-only>
+      <full-page :options="options" @after-load="afterLoad">
+        <div class="section">
+          <div
+            class="white--text d-flex justify-center align-center text-center noselect flex-column"
+            style="font-family: NugoSans-Light;"
+          >
+            <div class="floatAnimate containerName">
+              <div>Noéwen</div>
+              <div>
+                <strong>BOISNARD</strong>
+              </div>
+            </div>
+            <div style="font-family: NugoSans-Light, sans-serif; font-size: 17px" class="white--text noselect font-weight-bold">
+              Développeur web & mobile
+            </div>
           </div>
         </div>
-      </v-sheet>
-    </v-carousel-item>
-  </v-carousel>
+        <div class="section">
+          Second section ...
+        </div>
+      </full-page>
+    </client-only>
+  </div>
 </template>
-
 <script>
 
 export default {
   data () {
     return {
-      model: 0,
-      values: [
-        'Salut ! Je suis Noéwen BOISNARD.',
-        'Je suis développeur web et mobile',
-        'Scrollez ci-dessous pour voir mon CV !'
-      ],
-      colors: [
-        'primary',
-        'secondary',
-        'orange'
-      ]
+      options: {
+        licenseKey: 'YOUR_KEY_HERE',
+        menu: '#menu',
+        anchors: ['page1', 'page2', 'page3'],
+        sectionsColor: ['#5a0034', '#ff5f45', '#0798ec'],
+        navigation: true
+      }
     }
   },
-  mounted () {
-    setInterval(() => {
-      this.model++
-    }, 6000)
+  methods: {
+    afterLoad () {
+      console.log('test')
+    }
   }
 }
 </script>
 
-<style scoped lang="css">
+<style>
+.fp-right span {
+  background: #adadad !important;
+}
+</style>
+
+<style lang="css" scoped>
+@font-face {
+  font-family: "NugoSans-Light";
+  src: local("NugoSans-Light"), url(/fonts/NugoSans-Light.ttf) format("truetype");
+}
 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
@@ -64,8 +65,34 @@ export default {
   -khtml-user-select: none; /* Konqueror HTML */
   -moz-user-select: none; /* Old versions of Firefox */
   -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  user-select: none;
 }
 
+@media all and (min-width: 0) and (max-width: 429px) {
+  .containerName {
+    font-size: 50px;
+  }
+}
+
+@media not all and (min-width: 0) and (max-width: 429px) {
+  .containerName {
+    font-size: 70px;
+  }
+}
+
+.floatAnimate {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-20px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
 </style>
