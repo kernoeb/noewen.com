@@ -14,7 +14,8 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Développeur web et mobile' },
-      { name: 'keywords', content: 'noéwen,boisnard,noéwen boisnard,développeur,nuxtjs,nuxt.js,vue.js,vuejs,javascript,vannes,bretagne' }
+      { name: 'keywords', content: 'noéwen,boisnard,noéwen boisnard,développeur,nuxtjs,nuxt.js,vue.js,vuejs,javascript,vannes,bretagne' },
+      { name: 'google-site-verification', content: '8OsXtvbWNLNLJWH4Qz-ER-nQ2U4qvyJz1LRAakaU3lk' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
