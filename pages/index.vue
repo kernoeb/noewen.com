@@ -5,7 +5,7 @@
         <div class="section">
           <div
             class="white--text d-flex justify-center align-center text-center noselect flex-column"
-            style="font-family: NugoSans-Light;"
+            style="font-family: NugoSans-Light,sans-serif;"
           >
             <div class="floatAnimate containerName">
               <div>Noéwen</div>
@@ -43,44 +43,26 @@
                 </div>
               </v-hover>
             </div>
-            <v-footer absolute class="d-flex justify-center align-content" color="#5a0034" elevation="0">
-              <v-spacer />
-              <v-icon color="white" @click="$refs.fullpage.api.moveSectionDown()">
-                mdi-arrow-down-bold
-              </v-icon>
-              <v-spacer />
-              <v-hover
-                v-slot="{ hover }"
-              >
-                <v-icon :color="hover ? 'grey' : 'white'" class="mr-1" @click="openLinkedin()">
-                  mdi-linkedin
-                </v-icon>
-              </v-hover>
-              <v-hover
-                v-slot="{ hover }"
-              >
-                <v-icon :color="hover ? 'grey' : 'white'" @click="openGithub()">
-                  mdi-github
-                </v-icon>
-              </v-hover>
-            </v-footer>
+            <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
           </div>
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
             <v-col cols="10" lg="9">
-              <span class="black--text mb-4 text-h2 d-flex justify-center align-center text-center">Formations</span>
+              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Formations</span>
               <timeline :timeline="timelineFormation" />
             </v-col>
           </v-row>
+          <customfooter dark color="#dedede" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
             <v-col cols="10">
-              <span class="black--text mb-4 text-h2 d-flex justify-center align-center text-center">Expérience</span>
+              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Expérience</span>
               <timeline :timeline="timelineExperience" />
             </v-col>
           </v-row>
+          <customfooter dark color="#dedede" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
@@ -147,9 +129,10 @@
 </template>
 <script>
 import timeline from '~/components/timeline'
+import customfooter from '~/components/customfooter'
 
 export default {
-  components: { timeline },
+  components: { timeline, customfooter },
   data () {
     return {
       icons: [
@@ -173,7 +156,7 @@ export default {
           colorText: '#262626',
           colorDate: 'black',
           year: '2018 - 2020',
-          text: 'DUT INFORMATIQUE',
+          text: 'DUT INFO',
           description: 'Diplôme Universitaire Technologique (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
           icon: 'mdi-code-braces-box'
@@ -182,7 +165,7 @@ export default {
           colorText: '#262626',
           colorDate: 'black',
           year: '2020 - 2021',
-          text: 'Licence Professionnelle DLIS',
+          text: 'Licence Pro DLIS',
           description: 'Développement de Logiciels Innovants et Sécurisés (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
           icon: 'mdi-school',
@@ -194,7 +177,7 @@ export default {
           colorText: '#262626',
           colorDate: 'black',
           year: '2020',
-          text: 'Stage Dawizz (3 mois)',
+          text: 'Stage - Dawizz',
           description: '- Internationalisation d\'une plate-forme conteneurisée (Docker)\n- Développement d\'une application Electron',
           icon: 'mdi-electron-framework'
         },
@@ -202,7 +185,7 @@ export default {
           colorText: '#262626',
           colorDate: 'black',
           year: '2020',
-          text: 'Poste Développeur CDD (1 mois)',
+          text: 'CDD - Dawizz',
           description: '- Développement d\'un service web (Nuxt.js) d\'une plateforme conteneurisée',
           icon: 'mdi-code-tags'
         },
@@ -210,7 +193,7 @@ export default {
           colorText: '#262626',
           colorDate: 'black',
           year: '2020 - 2021',
-          text: 'Alternance Dawizz',
+          text: 'Alternance - Dawizz',
           description: '- Mise en place d\'un nouveau service conteneurisé\n- Développements côté client et côté serveur',
           link: 'https://www.dawizz.fr/',
           icon: 'mdi-school',
@@ -225,13 +208,13 @@ export default {
       }
     }
   },
-  methods: {
-    openLinkedin () {
-      window.open('https://www.linkedin.com/in/no%C3%A9wen-boisnard/')
-    },
-    openGithub () {
-      window.open('https://github.com/kernoeb')
+  watch: {
+    '$vuetify.breakpoint.xs' () {
+      this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
     }
+  },
+  mounted () {
+    this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
   }
 }
 </script>
