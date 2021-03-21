@@ -16,7 +16,7 @@
         />
       </template>
       <v-card rounded class="rounded-lg" color="#ededed">
-        <v-card-title class="headline font-weight-bold mb-4" :style="`color: ${item.colorText}`" style="word-break: break-word">
+        <v-card-title class="headline font-weight-bold mb-1" :style="`color: ${item.colorText}`" style="word-break: break-word">
           <div class="d-flex flex-column">
             <div>{{ item.text }}</div>
             <div v-if="item.ongoing" class="green--text font-weight-bold" style="font-size: 12px">
@@ -27,13 +27,13 @@
             </div>
           </div>
         </v-card-title>
-        <v-card-subtitle v-if="!$vuetify.breakpoint.mobile" style="color: #2f2f2f">
+        <v-card-subtitle v-if="!$vuetify.breakpoint.mobile" style="color: #2f2f2f; font-size: 12px;" class="pb-2">
           <pre style="white-space: pre-wrap;">{{ item.description }}</pre>
         </v-card-subtitle>
-        <v-card-text v-if="item.link && !$vuetify.breakpoint.mobile">
-          <v-icon class="mr-1" color="blue" @click="open(item.link)">
+        <v-card-text v-if="item.link && !$vuetify.breakpoint.mobile" class="pb-2">
+          <v-icon size="12" class="mt-1 mr-1" color="blue" @click="open(item.link)">
             mdi-open-in-new
-          </v-icon><a :href="item.link" target="_blank">{{ hostname(item.link) }}</a>
+          </v-icon><small><a :href="item.link" target="_blank">{{ hostname(item.link) }}</a></small>
         </v-card-text>
       </v-card>
     </v-timeline-item>
