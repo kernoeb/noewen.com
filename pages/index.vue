@@ -1,7 +1,7 @@
 <template>
   <div>
     <client-only>
-      <full-page :options="options">
+      <full-page ref="fullpage" :options="options">
         <div class="section">
           <div
             class="white--text d-flex justify-center align-center text-center noselect flex-column"
@@ -13,8 +13,12 @@
                 <strong>BOISNARD</strong>
               </div>
             </div>
-            <div style="font-family: NugoSans-Light, sans-serif; font-size: 17px" class="white--text noselect font-weight-bold">
-              Développeur web & mobile <v-icon color="white" class="mx-auto">
+            <div
+              class="white--text noselect font-weight-bold"
+              style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
+            >
+              Développeur web & mobile
+              <v-icon class="mx-auto" color="white">
                 mdi-code-tags
               </v-icon>
             </div>
@@ -28,10 +32,10 @@
                   <v-icon :small="!hover" color="white">
                     {{ icon.icon }}
                   </v-icon>
-                  <div v-show="hover" style="position: absolute" class="ml-n3">
+                  <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
                     <div><strong>{{ icon.text }}</strong></div>
                     <div>
-                      <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" small color="white">
+                      <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
                         mdi-heart
                       </v-icon>
                     </div>
@@ -39,10 +43,26 @@
                 </div>
               </v-hover>
             </div>
-            <v-footer absolute color="#5a0034" elevation="0" class="d-flex justify-center align-content">
-              <v-icon color="white">
+            <v-footer absolute class="d-flex justify-center align-content" color="#5a0034" elevation="0">
+              <v-spacer />
+              <v-icon color="white" @click="$refs.fullpage.api.moveSectionDown()">
                 mdi-arrow-down-bold
               </v-icon>
+              <v-spacer />
+              <v-hover
+                v-slot="{ hover }"
+              >
+                <v-icon :color="hover ? 'grey' : 'white'" class="mr-1" @click="openLinkedin()">
+                  mdi-linkedin
+                </v-icon>
+              </v-hover>
+              <v-hover
+                v-slot="{ hover }"
+              >
+                <v-icon :color="hover ? 'grey' : 'white'" @click="openGithub()">
+                  mdi-github
+                </v-icon>
+              </v-hover>
             </v-footer>
           </div>
         </div>
@@ -59,6 +79,65 @@
             <v-col cols="10">
               <span class="black--text mb-4 text-h2 d-flex justify-center align-center text-center">Expérience</span>
               <timeline :timeline="timelineExperience" />
+            </v-col>
+          </v-row>
+        </div>
+        <div class="section">
+          <v-row align-content="center" justify="center">
+            <v-col cols="10">
+              <span v-if="!$vuetify.breakpoint.mobile" class="black--text mb-4 text-h2 d-flex justify-center align-center text-center">Projets personnels</span>
+              <div v-else class="black--text mb-4 d-flex justify-center align-center text-center flex-column">
+                <div class="text-h3">
+                  Projets
+                </div>
+                <div class="text-h6">
+                  personnels
+                </div>
+              </div>
+              <v-container>
+                <v-row class="d-flex justify-center align-center">
+                  <v-col cols="12" lg="7">
+                    <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
+                      <v-card-title>PlanningIUT</v-card-title>
+                      <v-card-subtitle>Planning universitaire réalisé en Nuxt.js</v-card-subtitle>
+                      <v-card-text>
+                        <div>
+                          <v-icon class="mr-1" small>
+                            mdi-github
+                          </v-icon>
+                          <a href="https://github.com/kernoeb/planningiut" target="_blank">github.com/kernoeb/planningiut</a>
+                        </div>
+                        <div>
+                          <v-icon class="mr-1" small>
+                            mdi-open-in-new
+                          </v-icon>
+                          <a href="https://planning.noewen.com" target="_blank">planning.noewen.com</a>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
+                  <v-col cols="12" lg="7">
+                    <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
+                      <v-card-title>Géobtenu</v-card-title>
+                      <v-card-subtitle>Ressource de géographie pour GeoGuessr réalisée en Nuxt.js</v-card-subtitle>
+                      <v-card-text>
+                        <div>
+                          <v-icon class="mr-1" small>
+                            mdi-github
+                          </v-icon>
+                          <a href="https://github.com/kernoeb/geobtenu" target="_blank">github.com/kernoeb/geobtenu</a>
+                        </div>
+                        <div>
+                          <v-icon class="mr-1" small>
+                            mdi-open-in-new
+                          </v-icon>
+                          <a href="https://geobtenu.netlify.app" target="_blank">geobtenu.netlify.app</a>
+                        </div>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
+                </v-row>
+              </v-container>
             </v-col>
           </v-row>
         </div>
@@ -140,10 +219,18 @@ export default {
       ],
       options: {
         licenseKey: 'YOUR_KEY_HERE',
-        anchors: ['accueil', 'formations', 'experience'],
-        sectionsColor: ['#5a0034', '#dedede', '#dedede'],
+        anchors: ['accueil', 'formations', 'experience', 'projets'],
+        sectionsColor: ['#5a0034', '#dedede', '#dedede', '#dedede'],
         navigation: true
       }
+    }
+  },
+  methods: {
+    openLinkedin () {
+      window.open('https://www.linkedin.com/in/no%C3%A9wen-boisnard/')
+    },
+    openGithub () {
+      window.open('https://github.com/kernoeb')
     }
   }
 }
@@ -151,7 +238,7 @@ export default {
 
 <style>
 .fp-right span {
-  background: #adadad !important;
+  background: #535353 !important;
 }
 </style>
 

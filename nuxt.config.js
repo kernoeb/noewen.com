@@ -6,14 +6,15 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Noéwen - Site Officiel',
+    title: 'Noéwen BOISNARD',
     htmlAttrs: {
       lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Développeur web et mobile' },
+      { name: 'keywords', content: 'noéwen,boisnard,noéwen boisnard,développeur,nuxtjs,nuxt.js,vue.js,vuejs,javascript,vannes,bretagne' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
