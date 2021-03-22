@@ -58,7 +58,7 @@
         <div class="section">
           <v-row align-content="center" justify="center">
             <v-col cols="10">
-              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Expérience</span>
+              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Expériences</span>
               <timeline :timeline="timelineExperience" />
             </v-col>
           </v-row>
@@ -78,42 +78,22 @@
               </div>
               <v-container>
                 <v-row class="d-flex justify-center align-center">
-                  <v-col cols="12" lg="8">
-                    <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
-                      <v-card-title>PlanningIUT</v-card-title>
-                      <v-card-subtitle>Planning universitaire réalisé en Nuxt.js</v-card-subtitle>
+                  <v-col v-for="project in projects" :key="`project_${project.title}`" cols="12" lg="8">
+                    <v-card class="rounded-lg" elevation="4" rounded color="#f5f5f5" :class="!$vuetify.breakpoint.xs ? 'pa-4' : 'pa-0'">
+                      <v-card-title>
+                        <v-icon class="mr-1" :color="project.iconColor">
+                          {{ project.icon }}
+                        </v-icon>{{ project.title }}
+                      </v-card-title>
+                      <v-card-subtitle :class="$vuetify.breakpoint.xs ? 'pb-0' : null">
+                        {{ project.subtitle }}
+                      </v-card-subtitle>
                       <v-card-text>
-                        <div>
-                          <v-icon class="mr-1" small>
-                            mdi-github
+                        <div v-for="(item, i) in project.items" :key="`project_${project.title}_item_${i}`">
+                          <v-icon class="mr-1" small @click="openLink(item.link)">
+                            {{ item.icon }}
                           </v-icon>
-                          <a href="https://github.com/kernoeb/planningiut" target="_blank">github.com/kernoeb/planningiut</a>
-                        </div>
-                        <div>
-                          <v-icon class="mr-1" small>
-                            mdi-open-in-new
-                          </v-icon>
-                          <a href="https://planning.noewen.com" target="_blank">planning.noewen.com</a>
-                        </div>
-                      </v-card-text>
-                    </v-card>
-                  </v-col>
-                  <v-col cols="12" lg="8">
-                    <v-card class="pa-4 rounded-lg" elevation="4" rounded color="#f5f5f5">
-                      <v-card-title>Géobtenu</v-card-title>
-                      <v-card-subtitle>Ressource de géographie pour GeoGuessr réalisée en Nuxt.js</v-card-subtitle>
-                      <v-card-text>
-                        <div>
-                          <v-icon class="mr-1" small>
-                            mdi-github
-                          </v-icon>
-                          <a href="https://github.com/kernoeb/geobtenu" target="_blank">github.com/kernoeb/geobtenu</a>
-                        </div>
-                        <div>
-                          <v-icon class="mr-1" small>
-                            mdi-open-in-new
-                          </v-icon>
-                          <a href="https://geobtenu.netlify.app" target="_blank">geobtenu.netlify.app</a>
+                          <a :href="item.link" target="_blank">{{ item.formatted }}</a>
                         </div>
                       </v-card-text>
                     </v-card>
@@ -141,6 +121,28 @@ export default {
         { icon: 'mdi-react', text: 'ReactJS', heart: 2 },
         { icon: 'mdi-language-python', text: 'Python3', heart: 2 },
         { icon: 'mdi-language-java', text: 'Java', heart: 1 }
+      ],
+      projects: [
+        {
+          title: 'PlanningIUT',
+          subtitle: 'Planning universitaire',
+          icon: 'mdi-nuxt',
+          iconColor: 'green',
+          items: [
+            { icon: 'mdi-github', link: 'https://github.com/kernoeb/planningiut', formatted: 'Github' },
+            { icon: 'mdi-open-in-new', link: 'https://planning.noewen.com', formatted: 'planning.noewen.com' }
+          ]
+        },
+        {
+          title: 'Géobtenu',
+          subtitle: 'Ressource de géographie',
+          icon: 'mdi-nuxt',
+          iconColor: 'green',
+          items: [
+            { icon: 'mdi-github', link: 'https://github.com/kernoeb/geobtenu', formatted: 'Github' },
+            { icon: 'mdi-open-in-new', link: 'https://geobtenu.netlify.app', formatted: 'geobtenu.netlify.app' }
+          ]
+        }
       ],
       timelineFormation: [
         {
@@ -215,6 +217,11 @@ export default {
   },
   mounted () {
     this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
+  },
+  methods: {
+    openLink (link) {
+      window.open(link)
+    }
   }
 }
 </script>

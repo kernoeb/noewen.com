@@ -6,7 +6,7 @@
       :icon="item.icon"
       color="white"
       fill-dot
-      icon-color="black"
+      :icon-color="item.ongoing ? 'green' : 'black'"
     >
       <template #opposite>
         <span
@@ -19,14 +19,12 @@
         <v-card-title
           :style="`color: ${item.colorText}`"
           class="headline font-weight-bold"
+          :class="$vuetify.breakpoint.xs ? 'pa-2' : 'mb-2'"
           style="word-break: break-word"
         >
           <div class="d-flex flex-column">
-            <div :style="`${$vuetify.breakpoint.smAndDown ? 'font-size: 15px' : null}`" style="line-height: 20px">
+            <div :style="`${$vuetify.breakpoint.smAndDown ? 'font-size: 17px' : null}`" style="line-height: 20px">
               {{ item.text }}
-            </div>
-            <div v-if="item.ongoing" class="green--text font-weight-bold" style="font-size: 12px">
-              En cours
             </div>
             <div v-if="$vuetify.breakpoint.smAndDown" class="font-weight-bold" style="font-size: 10px">
               {{ item.year }}
