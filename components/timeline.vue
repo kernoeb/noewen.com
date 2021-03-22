@@ -19,7 +19,7 @@
         <v-card-title
           :style="`color: ${item.colorText}`"
           class="headline font-weight-bold"
-          :class="$vuetify.breakpoint.xs ? 'pa-2' : 'mb-2'"
+          :class="$vuetify.breakpoint.xs ? 'pa-2 pt-3 ml-1' : 'mb-2'"
           style="word-break: break-word"
         >
           <div class="d-flex flex-column">
