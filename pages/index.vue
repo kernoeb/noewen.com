@@ -3,48 +3,51 @@
     <client-only>
       <full-page ref="fullpage" :options="options">
         <div class="section">
-          <div
-            class="white--text d-flex justify-center align-center text-center noselect flex-column"
-            style="font-family: NugoSans-Light,sans-serif;"
-          >
-            <div class="floatAnimate containerName">
-              <div>Noéwen</div>
-              <div>
-                <strong>BOISNARD</strong>
-              </div>
-            </div>
+          <transition name="fade">
             <div
-              class="white--text noselect font-weight-bold"
-              style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
+              v-if="mounted"
+              class="white--text d-flex justify-center align-center text-center noselect flex-column"
+              style="font-family: NugoSans-Light,sans-serif;"
             >
-              Développeur web & mobile
-              <v-icon class="mx-auto" color="white">
-                mdi-code-tags
-              </v-icon>
-            </div>
-            <div class="mt-1" style="display: flex">
-              <v-hover
-                v-for="icon in icons"
-                :key="`icon_${icon.text}`"
-                v-slot="{ hover }"
-              >
+              <div class="floatAnimate containerName">
+                <div>Noéwen</div>
                 <div>
-                  <v-icon :small="!hover" color="white">
-                    {{ icon.icon }}
-                  </v-icon>
-                  <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
-                    <div><strong>{{ icon.text }}</strong></div>
-                    <div>
-                      <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
-                        mdi-heart
-                      </v-icon>
+                  <strong>BOISNARD</strong>
+                </div>
+              </div>
+              <div
+                class="white--text noselect font-weight-bold"
+                style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
+              >
+                Développeur web & mobile
+                <v-icon class="mx-auto" color="white">
+                  mdi-code-tags
+                </v-icon>
+              </div>
+              <div class="mt-1" style="display: flex">
+                <v-hover
+                  v-for="icon in icons"
+                  :key="`icon_${icon.text}`"
+                  v-slot="{ hover }"
+                >
+                  <div>
+                    <v-icon :small="!hover" color="white">
+                      {{ icon.icon }}
+                    </v-icon>
+                    <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
+                      <div><strong>{{ icon.text }}</strong></div>
+                      <div>
+                        <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
+                          mdi-heart
+                        </v-icon>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </v-hover>
+                </v-hover>
+              </div>
+              <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
             </div>
-            <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
-          </div>
+          </transition>
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
@@ -115,6 +118,7 @@ export default {
   components: { timeline, customfooter },
   data () {
     return {
+      mounted: false,
       icons: [
         { icon: 'mdi-vuejs', text: 'VueJS', heart: 3 },
         { icon: 'mdi-nuxt', text: 'NuxtJS', heart: 3 },
@@ -216,6 +220,9 @@ export default {
     }
   },
   mounted () {
+    setTimeout(() => {
+      this.mounted = true
+    }, 20)
     this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
   },
   methods: {
@@ -236,6 +243,13 @@ export default {
 @font-face {
   font-family: "NugoSans-Light";
   src: local("NugoSans-Light"), url(/fonts/NugoSans-Light.ttf) format("truetype");
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .6s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 .noselect {
