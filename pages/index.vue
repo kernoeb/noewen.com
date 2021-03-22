@@ -216,7 +216,8 @@ export default {
         licenseKey: 'YOUR_KEY_HERE',
         anchors: ['accueil', 'formations', 'experience', 'projets'],
         sectionsColor: ['#5a0034', '#dedede', '#dedede', '#dedede'],
-        navigation: true
+        navigation: true,
+        afterLoad: this.afterLoad
       }
     }
   },
@@ -228,10 +229,13 @@ export default {
   mounted () {
     setTimeout(() => {
       this.mounted = true
-    }, 100)
+    }, 1500)
     this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
   },
   methods: {
+    afterLoad () {
+      this.mounted = true
+    },
     openLink (link) {
       window.open(link)
     }
@@ -252,7 +256,7 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .6s;
+  transition: opacity 0.6s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
