@@ -228,7 +228,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.mounted = true
-    }, 20)
+    }, 100)
     this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
   },
   methods: {
