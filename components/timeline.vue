@@ -36,7 +36,7 @@
         </v-card-subtitle>
         <v-card-text v-if="item.link && !$vuetify.breakpoint.mobile" class="pb-2">
           <v-icon class="mt-1 mr-1" color="blue" size="12" @click="open(item.link)">
-            mdi-open-in-new
+            {{ mdiOpenInNew }}
           </v-icon>
           <small><a :href="item.link" target="_blank">{{ hostname(item.link) }}</a></small>
         </v-card-text>
@@ -46,11 +46,18 @@
 </template>
 
 <script>
+import { mdiOpenInNew } from '@mdi/js'
+
 export default {
   props: {
     timeline: {
       type: Array,
       default: null
+    }
+  },
+  data () {
+    return {
+      mdiOpenInNew
     }
   },
   methods: {

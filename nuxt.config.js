@@ -1,4 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
+import rules from './purgeUnusedCss.js'
+
+const { NODE_ENV = 'production' } = process.env
+const isDev = NODE_ENV === 'development'
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
@@ -15,7 +19,10 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Développeur web et mobile' },
       { name: 'keywords', content: 'noéwen,boisnard,noéwen boisnard,développeur,nuxtjs,nuxt.js,vue.js,vuejs,javascript,vannes,bretagne' },
-      { name: 'google-site-verification', content: '8OsXtvbWNLNLJWH4Qz-ER-nQ2U4qvyJz1LRAakaU3lk' }
+      { name: 'google-site-verification', content: '8OsXtvbWNLNLJWH4Qz-ER-nQ2U4qvyJz1LRAakaU3lk' },
+      { name: 'robots', content: 'index,follow' },
+      { name: 'language', content: 'French' },
+      { name: 'author', content: 'Noéwen BOISNARD' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -39,7 +46,12 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
-    '@nuxtjs/vuetify'
+    '@nuxtjs/vuetify',
+    ['@nuxtjs/google-fonts', {
+      families: {
+        Roboto: true
+      }
+    }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -63,6 +75,7 @@ export default {
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
+    defaultAssets: false,
     customVariables: ['~/assets/variables.scss'],
     theme: {
       dark: false,
@@ -82,5 +95,19 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extractCSS: true,
+    postcss: {
+      plugins: isDev
+        ? {}
+        : {
+            'css-byebye': {
+              rulesToRemove: [
+                /.*\.v-application--is-rtl.*/,
+                /.*\.theme--dark.*/,
+                ...rules
+              ]
+            }
+          }
+    }
   }
 }

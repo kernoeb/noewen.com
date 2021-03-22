@@ -21,7 +21,7 @@
               >
                 Développeur web & mobile
                 <v-icon class="mx-auto" color="white">
-                  mdi-code-tags
+                  {{ mdiCodeTags }}
                 </v-icon>
               </div>
               <div class="mt-1" style="display: flex">
@@ -38,7 +38,7 @@
                       <div><strong>{{ icon.text }}</strong></div>
                       <div>
                         <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
-                          mdi-heart
+                          {{ mdiHeart }}
                         </v-icon>
                       </div>
                     </div>
@@ -111,6 +111,7 @@
   </div>
 </template>
 <script>
+import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiReact, mdiLanguagePython, mdiLanguageJava, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework } from '@mdi/js'
 import timeline from '~/components/timeline'
 import customfooter from '~/components/customfooter'
 
@@ -118,33 +119,38 @@ export default {
   components: { timeline, customfooter },
   data () {
     return {
+      // Icons
+      mdiCodeTags,
+      mdiHeart,
+
+      // Data
       mounted: false,
       icons: [
-        { icon: 'mdi-vuejs', text: 'VueJS', heart: 3 },
-        { icon: 'mdi-nuxt', text: 'NuxtJS', heart: 3 },
-        { icon: 'mdi-react', text: 'ReactJS', heart: 2 },
-        { icon: 'mdi-language-python', text: 'Python3', heart: 2 },
-        { icon: 'mdi-language-java', text: 'Java', heart: 1 }
+        { icon: mdiVuejs, text: 'VueJS', heart: 3 },
+        { icon: mdiNuxt, text: 'NuxtJS', heart: 3 },
+        { icon: mdiReact, text: 'ReactJS', heart: 2 },
+        { icon: mdiLanguagePython, text: 'Python3', heart: 2 },
+        { icon: mdiLanguageJava, text: 'Java', heart: 1 }
       ],
       projects: [
         {
           title: 'PlanningIUT',
           subtitle: 'Planning universitaire',
-          icon: 'mdi-nuxt',
+          icon: mdiNuxt,
           iconColor: 'green',
           items: [
-            { icon: 'mdi-github', link: 'https://github.com/kernoeb/planningiut', formatted: 'Github' },
-            { icon: 'mdi-open-in-new', link: 'https://planning.noewen.com', formatted: 'planning.noewen.com' }
+            { icon: mdiGithub, link: 'https://github.com/kernoeb/planningiut', formatted: 'Github' },
+            { icon: mdiOpenInNew, link: 'https://planning.noewen.com', formatted: 'planning.noewen.com' }
           ]
         },
         {
           title: 'Géobtenu',
           subtitle: 'Ressource de géographie',
-          icon: 'mdi-nuxt',
+          icon: mdiNuxt,
           iconColor: 'green',
           items: [
-            { icon: 'mdi-github', link: 'https://github.com/kernoeb/geobtenu', formatted: 'Github' },
-            { icon: 'mdi-open-in-new', link: 'https://geobtenu.netlify.app', formatted: 'geobtenu.netlify.app' }
+            { icon: mdiGithub, link: 'https://github.com/kernoeb/geobtenu', formatted: 'Github' },
+            { icon: mdiOpenInNew, link: 'https://geobtenu.netlify.app', formatted: 'geobtenu.netlify.app' }
           ]
         }
       ],
@@ -156,7 +162,7 @@ export default {
           text: 'STI2D SIN',
           description: 'Baccalauréat Technologique (Lycée A.R. Lesage)',
           link: 'https://www.lycee-lesage.fr/',
-          icon: 'mdi-book-open-variant'
+          icon: mdiBookOpenVariant
         },
         {
           colorText: '#262626',
@@ -165,7 +171,7 @@ export default {
           text: 'DUT INFO',
           description: 'Diplôme Universitaire Technologique (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
-          icon: 'mdi-code-braces-box'
+          icon: mdiCodeBracesBox
         },
         {
           colorText: '#262626',
@@ -174,7 +180,7 @@ export default {
           text: 'Licence Pro DLIS',
           description: 'Développement de Logiciels Innovants et Sécurisés (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
-          icon: 'mdi-school',
+          icon: mdiSchool,
           ongoing: true
         }
       ],
@@ -185,7 +191,7 @@ export default {
           year: '2020',
           text: 'Stage - Dawizz',
           description: '- Internationalisation d\'une plate-forme conteneurisée (Docker)\n- Développement d\'une application Electron',
-          icon: 'mdi-electron-framework'
+          icon: mdiElectronFramework
         },
         {
           colorText: '#262626',
@@ -193,7 +199,7 @@ export default {
           year: '2020',
           text: 'CDD - Dawizz',
           description: '- Développement d\'un service web (Nuxt.js) d\'une plateforme conteneurisée',
-          icon: 'mdi-code-tags'
+          icon: mdiCodeTags
         },
         {
           colorText: '#262626',
@@ -202,7 +208,7 @@ export default {
           text: 'Alternance - Dawizz',
           description: '- Mise en place d\'un nouveau service conteneurisé\n- Développements côté client et côté serveur',
           link: 'https://www.dawizz.fr/',
-          icon: 'mdi-school',
+          icon: mdiSchool,
           ongoing: true
         }
       ],
