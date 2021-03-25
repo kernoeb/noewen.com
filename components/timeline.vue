@@ -15,7 +15,7 @@
           v-text="item.year"
         />
       </template>
-      <v-card class="rounded-lg" color="#ededed" rounded>
+      <v-card class="rounded-lg pa-1" color="#ededed" rounded>
         <v-card-title
           :style="`color: ${item.colorText}`"
           class="headline font-weight-bold"
@@ -31,8 +31,8 @@
             </div>
           </div>
         </v-card-title>
-        <v-card-subtitle v-if="!$vuetify.breakpoint.mobile" class="pb-2" style="color: #2f2f2f; font-size: 12px;">
-          <pre style="white-space: pre-wrap;">{{ item.description }}</pre>
+        <v-card-subtitle v-if="!$vuetify.breakpoint.mobile" class="pb-2">
+          {{ item.description }}
         </v-card-subtitle>
         <v-card-text v-if="item.link && !$vuetify.breakpoint.mobile" class="pb-2">
           <v-icon class="mt-1 mr-1" color="blue" size="12" @click="open(item.link)">

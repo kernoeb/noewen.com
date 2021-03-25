@@ -1,7 +1,7 @@
 <template>
   <v-footer absolute class="d-flex justify-center align-content" :color="color" elevation="0">
     <v-spacer />
-    <v-icon :color="dark ? '#393939' : 'white'" style="position: absolute" @click="$emit('scroll-down')">
+    <v-icon v-if="arrowDown" :color="dark ? '#393939' : 'white'" style="position: absolute" @click="$emit('scroll-down')">
       {{ mdiArrowDownBold }}
     </v-icon>
     <v-spacer />
@@ -34,6 +34,10 @@ export default {
     dark: {
       type: Boolean,
       default: false
+    },
+    arrowDown: {
+      type: Boolean,
+      default: true
     }
   },
   data () {

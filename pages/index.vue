@@ -3,7 +3,7 @@
     <client-only>
       <full-page ref="fullpage" :options="options">
         <div class="section">
-          <transition name="fade">
+          <transition name="zoom">
             <div
               v-if="mounted"
               class="white--text d-flex justify-center align-center text-center noselect flex-column"
@@ -31,23 +31,25 @@
                   v-slot="{ hover }"
                 >
                   <div>
-                    <v-icon :small="!hover" color="white">
+                    <v-icon size="35" color="white">
                       {{ icon.icon }}
                     </v-icon>
-                    <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
-                      <div><strong>{{ icon.text }}</strong></div>
-                      <div>
-                        <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
-                          {{ mdiHeart }}
-                        </v-icon>
+                    <transition name="zoomIcon" mode="in-out">
+                      <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
+                        <div><strong>{{ icon.text }}</strong></div>
+                        <div>
+                          <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
+                            {{ mdiHeart }}
+                          </v-icon>
+                        </div>
                       </div>
-                    </div>
+                    </transition>
                   </div>
                 </v-hover>
               </div>
-              <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
             </div>
           </transition>
+          <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
@@ -105,6 +107,7 @@
               </v-container>
             </v-col>
           </v-row>
+          <customfooter dark color="#dedede" :arrow-down="false" />
         </div>
       </full-page>
     </client-only>
@@ -129,7 +132,7 @@ export default {
         { icon: mdiVuejs, text: 'VueJS', heart: 3 },
         { icon: mdiNuxt, text: 'NuxtJS', heart: 3 },
         { icon: mdiReact, text: 'ReactJS', heart: 2 },
-        { icon: mdiLanguagePython, text: 'Python3', heart: 2 },
+        { icon: mdiLanguagePython, text: 'Python3', heart: 3 },
         { icon: mdiLanguageJava, text: 'Java', heart: 1 }
       ],
       projects: [
@@ -190,7 +193,7 @@ export default {
           colorDate: 'black',
           year: '2020',
           text: 'Stage - Dawizz',
-          description: '- Internationalisation d\'une plate-forme conteneurisée (Docker)\n- Développement d\'une application Electron',
+          description: 'Internationalisation d\'une plate-forme conteneurisée (Docker)\n- Développement d\'une application Electron',
           icon: mdiElectronFramework
         },
         {
@@ -198,7 +201,7 @@ export default {
           colorDate: 'black',
           year: '2020',
           text: 'CDD - Dawizz',
-          description: '- Développement d\'un service web (Nuxt.js) d\'une plateforme conteneurisée',
+          description: 'Développement d\'un service web (Nuxt.js) d\'une plateforme conteneurisée',
           icon: mdiCodeTags
         },
         {
@@ -206,7 +209,7 @@ export default {
           colorDate: 'black',
           year: '2020 - 2021',
           text: 'Alternance - Dawizz',
-          description: '- Mise en place d\'un nouveau service conteneurisé\n- Développements côté client et côté serveur',
+          description: 'Mise en place d\'un nouveau service conteneurisé\n- Développements côté client et côté serveur',
           link: 'https://www.dawizz.fr/',
           icon: mdiSchool,
           ongoing: true
@@ -255,10 +258,18 @@ export default {
   src: local("NugoSans-Light"), url(/fonts/NugoSans-Light.ttf) format("truetype");
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.6s;
+.zoom-enter-active, .zoom-leave-active {
+  transition: transform 0.6s;
 }
-.fade-enter, .fade-leave-to {
+.zoom-enter, .zoom-leave-to {
+  transform: scale(0.85);
+}
+
+.zoomIcon-enter-active, .zoomIcon-leave-active {
+  transition: transform 0.6s, opacity 0.3s;
+}
+.zoomIcon-enter, .zoomIcon-leave-to {
+  transform: scale(0.85);
   opacity: 0;
 }
 
