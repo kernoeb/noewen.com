@@ -1,5 +1,11 @@
 <template>
   <div>
+    <div v-if="!mounted" class="justify-center align-center d-flex" style="height: 100vh">
+      <v-progress-circular
+        indeterminate
+        color="grey"
+      />
+    </div>
     <client-only>
       <full-page ref="fullpage" :options="options">
         <div class="section">
@@ -230,14 +236,13 @@ export default {
     }
   },
   mounted () {
-    setTimeout(() => {
-      this.mounted = true
-    }, 1500)
     this.$set(this.options, 'navigation', !this.$vuetify.breakpoint.xs)
   },
   methods: {
     afterLoad () {
-      this.mounted = true
+      setTimeout(() => {
+        this.mounted = true
+      }, 100)
     },
     openLink (link) {
       window.open(link)
