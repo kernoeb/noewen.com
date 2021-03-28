@@ -258,11 +258,6 @@ export default {
 </style>
 
 <style lang="css" scoped>
-@font-face {
-  font-family: "NugoSans-Light";
-  src: local("NugoSans-Light"), url(/fonts/NugoSans-Light.ttf) format("truetype");
-}
-
 .zoom-enter-active, .zoom-leave-active {
   transition: transform 0.6s;
 }

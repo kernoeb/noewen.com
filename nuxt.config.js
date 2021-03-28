@@ -60,7 +60,19 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'vue-plausible'
+    'vue-plausible',
+    ['nuxt-font-loader-strategy', {
+      fonts: [
+        {
+          fileExtensions: ['ttf'],
+          fontFamily: 'NugoSans-Light',
+          fontFaces: [{
+            preload: true,
+            localSrc: ['NugoSans-Light'],
+            src: '@/assets/fonts/NugoSans-Light'
+          }]
+        }]
+    }]
   ],
 
   plausible: {
