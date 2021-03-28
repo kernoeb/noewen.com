@@ -69,7 +69,8 @@ export default {
           fontFaces: [{
             preload: true,
             localSrc: ['NugoSans-Light'],
-            src: '@/assets/fonts/NugoSans-Light'
+            src: '@/assets/fonts/NugoSans-Light',
+            fontDisplay: 'block'
           }]
         }]
     }]
