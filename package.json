@@ -29,7 +29,7 @@
     "css-byebye": "3.0.0",
     "eslint": "^7.23.0",
     "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-vue": "^7.8.0",
+    "eslint-plugin-vue": "^7.9.0",
     "glob": "^7.1.6"
   }
 }
