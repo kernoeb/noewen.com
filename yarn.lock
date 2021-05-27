@@ -6764,10 +6764,10 @@ num2fraction@^1.2.2:
   resolved "https://registry.yarnpkg.com/num2fraction/-/num2fraction-1.2.2.tgz#6f682b6a027a4e9ddfa4564cd2589d1d4e669ede"
   integrity sha1-b2gragJ6Tp3fpFZM0lidHU5mnt4=
 
-nuxt-font-loader-strategy@^1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/nuxt-font-loader-strategy/-/nuxt-font-loader-strategy-1.1.9.tgz#35c38af51aa748412edc3cec04d1cc9b1c618502"
-  integrity sha512-2wAeEsElRj9pHhdUHxV7Eay0x67Jlv3BNI5+OIN2i33KofQ4M7qHu9BfmZuK1ciatf5VHoeWYjm0tAzoV2x6Vw==
+nuxt-font-loader-strategy@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/nuxt-font-loader-strategy/-/nuxt-font-loader-strategy-1.1.10.tgz#eb5746cab3eb8149ea029c8a34fd956975db3c43"
+  integrity sha512-TgzdKMgI3lCkuFshY29Bl4njEDNKadCwYFv0HLxD9SNlly6bTEkO69E8gVxJ1LAcMqogjhiffb12ncHrO3apiA==
   dependencies:
     change-case "4.1.2"
     worker-loader "3.0.8"
