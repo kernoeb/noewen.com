@@ -149,7 +149,7 @@ export default {
           iconColor: 'green',
           items: [
             { icon: mdiGithub, link: 'https://github.com/kernoeb/planningiut', formatted: 'Github' },
-            { icon: mdiOpenInNew, link: 'https://planning.noewen.com', formatted: 'planning.noewen.com' }
+            { icon: mdiOpenInNew, link: 'https://planningiut.herokuapp.com', formatted: 'planningiut.herokuapp.com' }
           ]
         },
         {
