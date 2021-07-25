@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!mounted" class="justify-center align-center d-flex" style="height: 100vh">
+    <div v-if="!loaded" class="justify-center align-center d-flex" style="height: 100%; position: fixed; width: 100%;">
       <div class="section">
         <div
           class="white--text d-flex justify-center align-center text-center noselect flex-column"
@@ -94,7 +94,7 @@
             </div>
           </div>
           <transition name="fade">
-            <customfooter v-if="mounted" color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
+            <customfooter v-if="loaded" color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
           </transition>
         </div>
         <div class="section">
@@ -173,7 +173,7 @@ export default {
       mdiHeart,
 
       // Data
-      mounted: false,
+      loaded: false,
       icons: [
         { icon: mdiVuejs, text: 'VueJS', heart: 3 },
         { icon: mdiNuxt, text: 'NuxtJS', heart: 3 },
@@ -280,7 +280,7 @@ export default {
   },
   methods: {
     afterLoad () {
-      this.mounted = true
+      this.loaded = true
       console.clear()
     },
     openLink (link) {
