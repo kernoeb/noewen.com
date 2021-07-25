@@ -1,61 +1,101 @@
 <template>
   <div>
     <div v-if="!mounted" class="justify-center align-center d-flex" style="height: 100vh">
-      <v-progress-circular
-        indeterminate
-        color="grey"
-      />
+      <div class="section">
+        <div
+          class="white--text d-flex justify-center align-center text-center noselect flex-column"
+          style="font-family: NugoSans-Light,sans-serif;"
+        >
+          <div class="containerName">
+            <div>Noéwen</div>
+            <div>
+              <strong>BOISNARD</strong>
+            </div>
+          </div>
+          <div
+            class="white--text noselect font-weight-bold"
+            style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
+          >
+            Développeur web & mobile
+            <v-icon class="mx-auto" color="white">
+              {{ mdiCodeTags }}
+            </v-icon>
+          </div>
+          <div class="mt-1" style="display: flex">
+            <v-hover
+              v-for="icon in icons"
+              :key="`icon_${icon.text}`"
+              v-slot="{ hover }"
+            >
+              <div>
+                <v-icon size="35" color="white">
+                  {{ icon.icon }}
+                </v-icon>
+                <transition name="zoomIcon" mode="in-out">
+                  <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
+                    <div><strong>{{ icon.text }}</strong></div>
+                    <div>
+                      <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
+                        {{ mdiHeart }}
+                      </v-icon>
+                    </div>
+                  </div>
+                </transition>
+              </div>
+            </v-hover>
+          </div>
+        </div>
+      </div>
     </div>
     <client-only>
       <full-page ref="fullpage" :options="options">
         <div class="section">
-          <transition name="zoom">
-            <div
-              v-if="mounted"
-              class="white--text d-flex justify-center align-center text-center noselect flex-column"
-              style="font-family: NugoSans-Light,sans-serif;"
-            >
-              <div class="floatAnimate containerName">
-                <div>Noéwen</div>
-                <div>
-                  <strong>BOISNARD</strong>
-                </div>
-              </div>
-              <div
-                class="white--text noselect font-weight-bold"
-                style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
-              >
-                Développeur web & mobile
-                <v-icon class="mx-auto" color="white">
-                  {{ mdiCodeTags }}
-                </v-icon>
-              </div>
-              <div class="mt-1" style="display: flex">
-                <v-hover
-                  v-for="icon in icons"
-                  :key="`icon_${icon.text}`"
-                  v-slot="{ hover }"
-                >
-                  <div>
-                    <v-icon size="35" color="white">
-                      {{ icon.icon }}
-                    </v-icon>
-                    <transition name="zoomIcon" mode="in-out">
-                      <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
-                        <div><strong>{{ icon.text }}</strong></div>
-                        <div>
-                          <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
-                            {{ mdiHeart }}
-                          </v-icon>
-                        </div>
-                      </div>
-                    </transition>
-                  </div>
-                </v-hover>
+          <div
+            class="white--text d-flex justify-center align-center text-center noselect flex-column"
+            style="font-family: NugoSans-Light,sans-serif;"
+          >
+            <div class="floatAnimate containerName">
+              <div>Noéwen</div>
+              <div>
+                <strong>BOISNARD</strong>
               </div>
             </div>
+            <div
+              class="white--text noselect font-weight-bold"
+              style="font-family: NugoSans-Light, sans-serif; font-size: 17px"
+            >
+              Développeur web & mobile
+              <v-icon class="mx-auto" color="white">
+                {{ mdiCodeTags }}
+              </v-icon>
+            </div>
+            <div class="mt-1" style="display: flex">
+              <v-hover
+                v-for="icon in icons"
+                :key="`icon_${icon.text}`"
+                v-slot="{ hover }"
+              >
+                <div>
+                  <v-icon size="35" color="white">
+                    {{ icon.icon }}
+                  </v-icon>
+                  <transition name="zoomIcon" mode="in-out">
+                    <div v-show="hover" class="ml-n3 mt-2" style="position: absolute">
+                      <div><strong>{{ icon.text }}</strong></div>
+                      <div>
+                        <v-icon v-for="index in icon.heart" :key="`icon_${icon}_heart_${index}`" color="white" small>
+                          {{ mdiHeart }}
+                        </v-icon>
+                      </div>
+                    </div>
+                  </transition>
+                </div>
+              </v-hover>
+            </div>
+          </div>
+          <transition name="fade">
+            <customfooter v-if="mounted" color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
           </transition>
-          <customfooter color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
@@ -240,9 +280,8 @@ export default {
   },
   methods: {
     afterLoad () {
-      setTimeout(() => {
-        this.mounted = true
-      }, 100)
+      this.mounted = true
+      console.clear()
     },
     openLink (link) {
       window.open(link)
@@ -258,11 +297,11 @@ export default {
 </style>
 
 <style lang="css" scoped>
-.zoom-enter-active, .zoom-leave-active {
-  transition: transform 0.6s;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
 }
-.zoom-enter, .zoom-leave-to {
-  transform: scale(0.85);
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 .zoomIcon-enter-active, .zoomIcon-leave-active {
