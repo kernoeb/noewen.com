@@ -61,7 +61,6 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    'vue-plausible',
     ['nuxt-font-loader-strategy', {
       fonts: [
         {
