@@ -35,7 +35,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/fullpage', mode: 'client' }
+    { src: '~/plugins/fullpage', mode: 'client' },
+    { src: '~/plugins/vue-plausible.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -75,10 +76,6 @@ export default {
         }]
     }]
   ],
-
-  plausible: {
-    apiHost: 'https://plausible.noewen.com'
-  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
