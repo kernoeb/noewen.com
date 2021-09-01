@@ -31,9 +31,7 @@
             </div>
           </div>
         </v-card-title>
-        <v-card-subtitle v-if="$vuetify.breakpoint.mdAndUp" class="pb-2">
-          {{ item.description }}
-        </v-card-subtitle>
+        <v-card-subtitle v-if="$vuetify.breakpoint.mdAndUp" class="pb-2" v-html="item.description" />
         <v-card-text v-if="item.link && !$vuetify.breakpoint.mobile" class="pb-2">
           <v-icon class="mt-1 mr-1" color="blue" size="12" @click="open(item.link)">
             {{ mdiOpenInNew }}

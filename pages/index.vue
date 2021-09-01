@@ -183,13 +183,13 @@ export default {
       ],
       projects: [
         {
-          title: 'PlanningIUT',
+          title: 'PlanningSup',
           subtitle: 'Planning universitaire',
           icon: mdiNuxt,
           iconColor: 'green',
           items: [
-            { icon: mdiGithub, link: 'https://github.com/kernoeb/planningiut', formatted: 'Github' },
-            { icon: mdiOpenInNew, link: 'https://planningiut.herokuapp.com', formatted: 'planningiut.herokuapp.com' }
+            { icon: mdiGithub, link: 'https://github.com/kernoeb/planningsup', formatted: 'Github' },
+            { icon: mdiOpenInNew, link: 'https://planningsup.app', formatted: 'PlanningSup.app' }
           ]
         },
         {
@@ -229,8 +229,7 @@ export default {
           text: 'Licence Pro DLIS',
           description: 'Développement de Logiciels Innovants et Sécurisés (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
-          icon: mdiSchool,
-          ongoing: true
+          icon: mdiSchool
         }
       ],
       timelineExperience: [
@@ -239,25 +238,25 @@ export default {
           colorDate: 'black',
           year: '2020',
           text: 'Stage - Dawizz',
-          description: 'Internationalisation d\'une plate-forme conteneurisée (Docker)\n- Développement d\'une application Electron',
+          description: '- Internationalisation d\'une plate-forme conteneurisée (Docker)<br>- Développement d\'une application Electron',
           icon: mdiElectronFramework
-        },
-        {
-          colorText: '#262626',
-          colorDate: 'black',
-          year: '2020',
-          text: 'CDD - Dawizz',
-          description: 'Développement d\'un service web (Nuxt.js) d\'une plateforme conteneurisée',
-          icon: mdiCodeTags
         },
         {
           colorText: '#262626',
           colorDate: 'black',
           year: '2020 - 2021',
           text: 'Alternance - Dawizz',
-          description: 'Mise en place d\'un nouveau service conteneurisé\n- Développements côté client et côté serveur',
+          description: '- Mise en place d\'un nouveau service conteneurisé<br>- Développements côté client et côté serveur',
           link: 'https://www.dawizz.fr/',
-          icon: mdiSchool,
+          icon: mdiSchool
+        },
+        {
+          colorText: '#262626',
+          colorDate: 'black',
+          year: '2021',
+          text: 'CDI - Dawizz',
+          description: 'Développeur Full-Stack Junior<br>Développement, maintenance, et amélioration de la plateforme MyDataCatalogue',
+          icon: mdiCodeTags,
           ongoing: true
         }
       ],
