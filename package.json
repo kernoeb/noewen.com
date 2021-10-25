@@ -28,7 +28,7 @@
     "babel-eslint": "^10.1.0",
     "css-byebye": "3.0.0",
     "eslint": "^7.31.0",
-    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-nuxt": "^3.0.0",
     "eslint-plugin-vue": "^7.14.0",
     "glob": "^7.1.7"
   }
