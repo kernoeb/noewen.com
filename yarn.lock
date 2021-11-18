@@ -3709,10 +3709,10 @@ css-blank-pseudo@^0.1.4:
   dependencies:
     postcss "^7.0.5"
 
-css-byebye@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/css-byebye/-/css-byebye-3.0.0.tgz#ea093be042edda3b1dc2f0eef8dba65b08bf4bce"
-  integrity sha512-ROgP9pCuLSVizmWF+90jyKUynAcLvmrBj6K+cNjrCyzYYvEX/UYHM32mwRbiqJXYtboth3Z5gS/nq/0ZX8JbWg==
+css-byebye@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/css-byebye/-/css-byebye-3.1.0.tgz#3fccd79acf612d7776225d6897f359c2034b6b36"
+  integrity sha512-/VsUq9ZaYnnOtUWDxnO5KpEJ/PHoIyBKMqC22zRxdFO2BZ7R8NTnZSQxkdXeY5dwqszev4g29+4SRHY3uqi2NQ==
   dependencies:
     postcss "^6.0.19"
 
