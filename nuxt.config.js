@@ -4,6 +4,9 @@ import rules from './purgeUnusedCss.js'
 const { NODE_ENV = 'production' } = process.env
 const isDev = NODE_ENV === 'development'
 
+const DOMAIN = 'noewen.com'
+const PLAUSIBLE_DOMAIN = 'plausible.noewen.com'
+
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -35,8 +38,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/fullpage', mode: 'client' },
-    { src: '~/plugins/vue-plausible.js', mode: 'client' }
+    { src: '~/plugins/fullpage', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,7 +54,9 @@ export default {
       families: {
         Roboto: true
       }
-    }]
+    }],
+    // https://github.com/moritzsternemann/vue-plausible
+    'vue-plausible'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -75,6 +79,20 @@ export default {
         }]
     }]
   ],
+
+  plausible: { // Use as fallback if no runtime config is available at runtime
+    domain: DOMAIN,
+    enableAutoPageviews: true,
+    enableAutoOutboundTracking: true
+  },
+  publicRuntimeConfig: {
+    plausible: {
+      domain: DOMAIN,
+      apiHost: 'https://' + PLAUSIBLE_DOMAIN,
+      enableAutoPageviews: true,
+      enableAutoOutboundTracking: true
+    }
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
