@@ -99,18 +99,18 @@
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
-            <v-col cols="10" lg="9">
-              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Formations</span>
-              <timeline :timeline="timelineFormation" />
+            <v-col cols="10">
+              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Expériences</span>
+              <timeline :timeline="timelineExperience" />
             </v-col>
           </v-row>
           <customfooter dark color="#dedede" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
-            <v-col cols="10">
-              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Expériences</span>
-              <timeline :timeline="timelineExperience" />
+            <v-col cols="10" lg="9">
+              <span :class="$vuetify.breakpoint.mobile ? 'text-h4' : 'text-h2'" class="black--text mb-4 d-flex justify-center align-center text-center">Formations</span>
+              <timeline :timeline="timelineFormation" />
             </v-col>
           </v-row>
           <customfooter dark color="#dedede" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
@@ -130,24 +130,28 @@
               <v-container>
                 <v-row class="d-flex justify-center align-center">
                   <v-col v-for="project in projects" :key="`project_${project.title}`" cols="12" lg="8">
-                    <v-card class="rounded-lg" elevation="4" rounded color="#f5f5f5" :class="!$vuetify.breakpoint.xs ? 'pa-4' : 'pa-0'">
-                      <v-card-title>
-                        <v-icon class="mr-1" :color="project.iconColor">
-                          {{ project.icon }}
-                        </v-icon>{{ project.title }}
-                      </v-card-title>
-                      <v-card-subtitle :class="$vuetify.breakpoint.xs ? 'pb-0' : null">
-                        {{ project.subtitle }}
-                      </v-card-subtitle>
-                      <v-card-text>
-                        <div v-for="(item, i) in project.items" :key="`project_${project.title}_item_${i}`">
-                          <v-icon class="mr-1" small @click="openLink(item.link)">
-                            {{ item.icon }}
-                          </v-icon>
-                          <a :href="item.link" target="_blank">{{ item.formatted }}</a>
-                        </div>
-                      </v-card-text>
-                    </v-card>
+                    <v-hover>
+                      <template #default="{ hover }">
+                        <v-card class="rounded-lg transition-swing" :elevation="hover ? 6 : 4" rounded color="#f5f5f5" :class="!$vuetify.breakpoint.xs ? 'pa-4' : 'pa-0'">
+                          <v-card-title>
+                            <v-icon class="mr-1" :color="project.iconColor">
+                              {{ project.icon }}
+                            </v-icon>{{ project.title }}
+                          </v-card-title>
+                          <v-card-subtitle :class="$vuetify.breakpoint.xs ? 'pb-0' : null">
+                            {{ project.subtitle }}
+                          </v-card-subtitle>
+                          <v-card-text>
+                            <div v-for="(item, i) in project.items" :key="`project_${project.title}_item_${i}`">
+                              <v-icon class="mr-1" small @click="openLink(item.link)">
+                                {{ item.icon }}
+                              </v-icon>
+                              <a :href="item.link" target="_blank">{{ item.formatted }}</a>
+                            </div>
+                          </v-card-text>
+                        </v-card>
+                      </template>
+                    </v-hover>
                   </v-col>
                 </v-row>
               </v-container>
@@ -160,7 +164,7 @@
   </div>
 </template>
 <script>
-import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiReact, mdiLanguagePython, mdiLanguageJava, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework } from '@mdi/js'
+import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiReact, mdiLanguagePython, mdiLanguageJava, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework, mdiApplicationBrackets } from '@mdi/js'
 import timeline from '~/components/timeline'
 import customfooter from '~/components/customfooter'
 
@@ -211,7 +215,8 @@ export default {
           text: 'STI2D SIN',
           description: 'Baccalauréat Technologique (Lycée A.R. Lesage)',
           link: 'https://www.lycee-lesage.fr/',
-          icon: mdiBookOpenVariant
+          icon: mdiBookOpenVariant,
+          iconColor: 'green'
         },
         {
           colorText: '#262626',
@@ -220,7 +225,8 @@ export default {
           text: 'DUT INFO',
           description: 'Diplôme Universitaire Technologique (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
-          icon: mdiCodeBracesBox
+          icon: mdiCodeBracesBox,
+          iconColor: 'orange'
         },
         {
           colorText: '#262626',
@@ -229,9 +235,10 @@ export default {
           text: 'Licence Pro DLIS',
           description: 'Développement de Logiciels Innovants et Sécurisés (IUT de Vannes)',
           link: 'https://www.iutvannes.fr/',
-          icon: mdiSchool
+          icon: mdiSchool,
+          iconColor: 'pink'
         }
-      ],
+      ].reverse(),
       timelineExperience: [
         {
           colorText: '#262626',
@@ -239,7 +246,8 @@ export default {
           year: '2020',
           text: 'Stage - Dawizz',
           description: '- Internationalisation d\'une plate-forme conteneurisée (Docker)<br>- Développement d\'une application Electron',
-          icon: mdiElectronFramework
+          icon: mdiElectronFramework,
+          iconColor: 'green'
         },
         {
           colorText: '#262626',
@@ -248,7 +256,8 @@ export default {
           text: 'Alternance - Dawizz',
           description: '- Mise en place d\'un nouveau service conteneurisé<br>- Développements côté client et côté serveur',
           link: 'https://www.dawizz.fr/',
-          icon: mdiSchool
+          icon: mdiSchool,
+          iconColor: 'pink'
         },
         {
           colorText: '#262626',
@@ -256,13 +265,14 @@ export default {
           year: '2021',
           text: 'CDI - Dawizz',
           description: 'Développeur Full-Stack Junior<br>Développement, maintenance, et amélioration de la plateforme MyDataCatalogue',
-          icon: mdiCodeTags,
-          ongoing: true
+          icon: mdiApplicationBrackets,
+          ongoing: true,
+          iconColor: '#00b0b9'
         }
-      ],
+      ].reverse(),
       options: {
         licenseKey: 'YOUR_KEY_HERE',
-        anchors: ['accueil', 'formations', 'experience', 'projets'],
+        anchors: ['accueil', 'experience', 'formations', 'projets'],
         sectionsColor: ['#5a0034', '#dedede', '#dedede', '#dedede'],
         navigation: true,
         afterLoad: this.afterLoad
