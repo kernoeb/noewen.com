@@ -255,7 +255,7 @@ export default {
           year: '2020 - 2021',
           text: 'Alternance - Dawizz',
           description: '- Mise en place d\'un nouveau service conteneurisé<br>- Développements côté client et côté serveur',
-          link: 'https://www.dawizz.fr/',
+          link: 'https://dawizz.fr',
           icon: mdiSchool,
           iconColor: 'pink'
         },
