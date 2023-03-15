@@ -28,6 +28,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-nuxt": "^2.0.0",
     "eslint-plugin-vue": "^7.20.0",
-    "glob": "^7.2.3"
+    "glob": "^9.3.0"
   }
 }
