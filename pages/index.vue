@@ -134,9 +134,7 @@
                       <template #default="{ hover }">
                         <v-card class="rounded-lg transition-swing" :elevation="hover ? 6 : 4" rounded color="#f5f5f5" :class="!$vuetify.breakpoint.xs ? 'pa-4' : 'pa-0'">
                           <v-card-title>
-                            <v-icon class="mr-1" :color="project.iconColor">
-                              {{ project.icon }}
-                            </v-icon>{{ project.title }}
+                            <img style="height: 24px; width: 24px;" :alt="project.title" class="mr-2" :src="project.favicon">{{ project.title }}
                           </v-card-title>
                           <v-card-subtitle :class="$vuetify.breakpoint.xs ? 'pb-0' : null">
                             {{ project.subtitle }}
@@ -164,7 +162,7 @@
   </div>
 </template>
 <script>
-import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiReact, mdiLanguagePython, mdiLanguageJava, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework, mdiApplicationBrackets } from '@mdi/js'
+import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiLanguageJavascript, mdiLanguagePython, mdiLanguageGo, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework, mdiApplicationBrackets } from '@mdi/js'
 import timeline from '~/components/timeline'
 import customfooter from '~/components/customfooter'
 
@@ -179,31 +177,29 @@ export default {
       // Data
       loaded: false,
       icons: [
-        { icon: mdiVuejs, text: 'VueJS', heart: 3 },
-        { icon: mdiNuxt, text: 'NuxtJS', heart: 3 },
-        { icon: mdiReact, text: 'ReactJS', heart: 2 },
+        { icon: mdiLanguageJavascript, text: 'JavaScript', heart: 3 },
+        { icon: mdiVuejs, text: 'Vue.js', heart: 3 },
+        { icon: mdiNuxt, text: 'Nuxt.js', heart: 3 },
         { icon: mdiLanguagePython, text: 'Python3', heart: 3 },
-        { icon: mdiLanguageJava, text: 'Java', heart: 1 }
+        { icon: mdiLanguageGo, text: 'Go', heart: 2 }
       ],
       projects: [
         {
           title: 'PlanningSup',
           subtitle: 'Planning universitaire',
-          icon: mdiNuxt,
-          iconColor: 'green',
+          favicon: 'https://planningsup.app/favicon.ico',
           items: [
             { icon: mdiGithub, link: 'https://github.com/kernoeb/planningsup', formatted: 'Github' },
             { icon: mdiOpenInNew, link: 'https://planningsup.app', formatted: 'PlanningSup.app' }
           ]
         },
         {
-          title: 'Géobtenu',
-          subtitle: 'Ressource de géographie',
-          icon: mdiNuxt,
-          iconColor: 'green',
+          title: 'Drapeau du Jour',
+          subtitle: 'Chaque jour, trouvez le pays et la capitale associés au drapeau',
+          favicon: 'https://drapeaudujour.noewen.com/favicon.ico',
           items: [
-            { icon: mdiGithub, link: 'https://github.com/kernoeb/geobtenu', formatted: 'Github' },
-            { icon: mdiOpenInNew, link: 'https://geobtenu.netlify.app', formatted: 'geobtenu.netlify.app' }
+            { icon: mdiGithub, link: 'https://github.com/kernoeb/drapeau-du-jour', formatted: 'Github' },
+            { icon: mdiOpenInNew, link: 'https://drapeaudujour.noewen.com', formatted: 'DrapeauDuJour' }
           ]
         }
       ],
@@ -262,9 +258,9 @@ export default {
         {
           colorText: '#262626',
           colorDate: 'black',
-          year: '2021',
+          year: '2021 - 2023',
           text: 'CDI - Dawizz',
-          description: 'Développeur Full-Stack Junior<br>Développement, maintenance, et amélioration de la plateforme MyDataCatalogue',
+          description: 'Développeur Full-Stack<br>Développement, maintenance, et amélioration de la plateforme MyDataCatalogue',
           icon: mdiApplicationBrackets,
           ongoing: true,
           iconColor: '#00b0b9'
