@@ -46,6 +46,7 @@
           </div>
         </div>
       </div>
+      <customfooter first :loaded="false" color="#5a0034" />
     </div>
     <client-only>
       <full-page ref="fullpage" :options="options">
@@ -93,9 +94,7 @@
               </v-hover>
             </div>
           </div>
-          <transition name="fade">
-            <customfooter v-if="loaded" color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
-          </transition>
+          <customfooter first color="#5a0034" @scroll-down="$refs.fullpage.api.moveSectionDown()" />
         </div>
         <div class="section">
           <v-row align-content="center" justify="center">
@@ -155,7 +154,7 @@
               </v-container>
             </v-col>
           </v-row>
-          <customfooter dark color="#dedede" :arrow-down="false" />
+          <customfooter dark color="#dedede" :arrow-down="false" @back-to-top="$refs.fullpage.api.moveTo(1)" />
         </div>
       </full-page>
     </client-only>
@@ -299,16 +298,15 @@ export default {
 .fp-right span {
   background: #535353 !important;
 }
-</style>
-
-<style lang="css" scoped>
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
+</style>
 
+<style lang="css" scoped>
 .zoomIcon-enter-active, .zoomIcon-leave-active {
   transition: transform 0.6s, opacity 0.3s;
 }
