@@ -161,7 +161,22 @@
   </div>
 </template>
 <script>
-import { mdiCodeTags, mdiHeart, mdiVuejs, mdiNuxt, mdiLanguageJavascript, mdiLanguagePython, mdiLanguageGo, mdiGithub, mdiOpenInNew, mdiBookOpenVariant, mdiCodeBracesBox, mdiSchool, mdiElectronFramework, mdiApplicationBrackets } from '@mdi/js'
+import {
+  mdiCodeTags,
+  mdiHeart,
+  mdiVuejs,
+  mdiLanguageJavascript,
+  mdiLanguagePython,
+  mdiLanguageGo,
+  mdiGithub,
+  mdiOpenInNew,
+  mdiBookOpenVariant,
+  mdiCodeBracesBox,
+  mdiSchool,
+  mdiElectronFramework,
+  mdiApplicationBrackets,
+  mdiLanguageRust
+} from '@mdi/js'
 import timeline from '~/components/timeline'
 import customfooter from '~/components/customfooter'
 
@@ -178,7 +193,7 @@ export default {
       icons: [
         { icon: mdiLanguageJavascript, text: 'JavaScript', heart: 3 },
         { icon: mdiVuejs, text: 'Vue.js', heart: 3 },
-        { icon: mdiNuxt, text: 'Nuxt.js', heart: 3 },
+        { icon: mdiLanguageRust, text: 'Rust', heart: 3 },
         { icon: mdiLanguagePython, text: 'Python3', heart: 3 },
         { icon: mdiLanguageGo, text: 'Go', heart: 2 }
       ],
@@ -250,16 +265,16 @@ export default {
           year: '2020 - 2021',
           text: 'Alternance - Dawizz',
           description: '- Mise en place d\'un nouveau service conteneurisé<br>- Développements côté client et côté serveur',
-          link: 'https://dawizz.fr',
           icon: mdiSchool,
           iconColor: 'pink'
         },
         {
           colorText: '#262626',
           colorDate: 'black',
-          year: '2021 - 2023',
-          text: 'CDI - Dawizz',
+          year: '2021 - 2024',
+          text: 'CDI - Dawizz (a Blueway company)',
           description: 'Développeur Full-Stack<br>Développement, maintenance, et amélioration de la plateforme MyDataCatalogue',
+          link: 'https://dawizz.fr',
           icon: mdiApplicationBrackets,
           ongoing: true,
           iconColor: '#00b0b9'
