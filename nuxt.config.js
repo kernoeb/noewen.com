@@ -114,17 +114,19 @@ export default {
   build: {
     extractCSS: true,
     postcss: {
-      plugins: isDev
-        ? {}
-        : {
-            'css-byebye': {
-              rulesToRemove: [
-                /.*\.v-application--is-rtl.*/,
-                /.*\.theme--dark.*/,
-                ...rules
-              ]
+      postcssOptions: {
+        plugins: isDev
+          ? {}
+          : {
+              'css-byebye': {
+                rulesToRemove: [
+                  /.*\.v-application--is-rtl.*/,
+                  /.*\.theme--dark.*/,
+                  ...rules
+                ]
+              }
             }
-          }
+      }
     }
   }
 }
