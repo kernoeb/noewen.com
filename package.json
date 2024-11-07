@@ -1,7 +1,7 @@
 {
   "name": "noewencom",
-  "version": "1.0.0",
   "type": "module",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite --port 8080",
     "typecheck": "vue-tsc --noEmit",
