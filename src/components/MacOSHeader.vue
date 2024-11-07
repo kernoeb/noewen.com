@@ -17,7 +17,7 @@ const emit = defineEmits(['close', 'minimize', 'maximize'])
 
 <template>
   <div class="d-flex pl-3 pt-2 pb-0 align-center justify-space-between">
-    <div>
+    <div class="d-flex align-center">
       <v-btn
         aria-label="Close"
         elevation="0"

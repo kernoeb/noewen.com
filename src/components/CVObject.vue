@@ -13,7 +13,7 @@ const urlWithoutNavbar = computed(() => {
 
 <template>
   <v-card>
-    <MacOSHeader class="mb-2" :header-title="cvTitle" @close="emit('close')" @minimize="emit('minimize')" @maximize="emit('maximize')" />
+    <MacOSHeader style="margin-bottom: 6px; padding-top: 6px;" :header-title="cvTitle" @close="emit('close')" @minimize="emit('minimize')" @maximize="emit('maximize')" />
     <object :data="urlWithoutNavbar" type="application/pdf" width="100%" height="100%">
       <div class="d-flex justify-center align-center h-100 pa-7 flex-column">
         <div class="text-h2 mb-5">
