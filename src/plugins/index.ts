@@ -13,15 +13,15 @@ import { createPlausible } from 'v-plausible/vue'
 const domain = 'noewen.com'
 
 export function registerPlugins(app: App) {
-  app
-    .use(vuetify)
+  app.use(vuetify)
 
+  // Load Plausible Analytics on mounted app
   if (!import.meta.env.SSR) {
     const plausible = createPlausible({
       init: {
         domain,
         apiHost: `https://plausible.${domain}`,
-        trackLocalhost: true,
+        trackLocalhost: false,
       },
       settings: {
         enableAutoOutboundTracking: true,
