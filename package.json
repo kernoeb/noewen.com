@@ -1,33 +1,41 @@
 {
   "name": "noewencom",
   "version": "1.0.0",
-  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate",
-    "lint": "eslint --ext \".js,.vue\" --ignore-path .gitignore ."
+    "dev": "vite --port 8080",
+    "typecheck": "vue-tsc --noEmit",
+    "build": "vite-ssg build",
+    "preview": "vite preview",
+    "lint": "eslint ."
   },
   "dependencies": {
-    "@mdi/js": "7.4.47",
-    "@nuxtjs/google-fonts": "1.3.0",
-    "core-js": "3.39.0",
-    "nuxt": "2.18.1",
-    "nuxt-font-loader-strategy": "1.1.10",
-    "vue-fullpage.js": "0.1.7",
-    "vue-plausible": "1.3.2"
+    "@mdi/font": "7",
+    "roboto-fontface": "*",
+    "vue": "3.5.12",
+    "vuetify": "3.7.4"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "7.25.9",
-    "@nuxt/types": "2.18.1",
-    "@nuxtjs/eslint-config": "6.0.1",
-    "@nuxtjs/eslint-module": "3.1.0",
-    "@nuxtjs/vuetify": "1.12.3",
-    "css-byebye": "3.1.1",
-    "eslint": "7.32.0",
-    "eslint-plugin-nuxt": "2.0.0",
-    "eslint-plugin-vue": "7.20.0",
-    "glob": "7.2.3"
+    "@antfu/eslint-config": "3.8.0",
+    "@mdi/js": "7.4.47",
+    "@types/bun": "*",
+    "@unhead/vue": "1.11.11",
+    "@vitejs/plugin-vue": "5.1.4",
+    "@vue/eslint-config-typescript": "14",
+    "beasties": "0.1.0",
+    "eslint": "9.14.0",
+    "pinia": "2.2.6",
+    "sass-embedded": "1.80.6",
+    "typescript": "5.6.3",
+    "unplugin-auto-import": "0.18.3",
+    "unplugin-fonts": "1.1.1",
+    "unplugin-vue-components": "0.27.4",
+    "unplugin-vue-router": "0.10.8",
+    "vite": "5.4.10",
+    "vite-plugin-vue-layouts": "0.11.0",
+    "vite-plugin-vuetify": "2.0.4",
+    "vite-ssg": "0.24.1",
+    "vue-router": "4.4.5",
+    "vue-tsc": "2.1.10"
   }
 }

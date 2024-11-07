@@ -1,5 +1,2 @@
-[build.environment]
-  NODE_VERSION = "22"
-  NPM_FLAGS = "--version"
 [build]
-  command = "npm i && npm run generate"
+  command = "bun run build"

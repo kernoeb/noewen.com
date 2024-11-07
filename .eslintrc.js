@@ -1,19 +1,20 @@
+/**
+ * .eslint.js
+ *
+ * ESLint configuration file.
+ */
+
 module.exports = {
   root: true,
   env: {
-    browser: true,
-    node: true
-  },
-  parserOptions: {
-    parser: '@babel/eslint-parser',
-    requireConfigFile: false
+    node: true,
   },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
+    'vuetify',
+    '@vue/eslint-config-typescript',
+    './.eslintrc-auto-import.json',
   ],
-  plugins: [
-  ],
-  // add your custom rules here
-  rules: {}
+  rules: {
+    'vue/multi-word-component-names': 'off',
+  },
 }
