@@ -1,5 +1,9 @@
 # noewen.com
 
+## Prerequisites
+
+- [Bun](https://bun.sh/)
+
 ## Build Setup
 
 ```bash
