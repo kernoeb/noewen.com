@@ -1,5 +1,15 @@
 <script lang="ts" setup>
-//
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Noéwen BOISNARD',
+  meta: [
+    {
+      name: 'description',
+      content: 'Développeur Fullstack',
+    },
+  ],
+})
 </script>
 
 <template>
