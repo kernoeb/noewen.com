@@ -61,6 +61,16 @@ const projects = ref([
     description: 'Ressources infinies pour tout le monde.',
     technologies: ['Nuxt 3'],
   },
+  {
+    title: 'Partage',
+    url: 'https://github.com/kernoeb/partage',
+    iconProps: {
+      name: '$share-circle',
+      color: 'white',
+    },
+    description: 'Partage de texte dans le même réseau local.',
+    technologies: ['Vue 3', 'Rust', 'WebSockets'],
+  },
 ])
 
 const floatAnimate = ref(false)
