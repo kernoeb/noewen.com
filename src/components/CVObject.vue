@@ -1,8 +1,14 @@
 <script setup lang="ts">
-const props = defineProps<{
-  cv: string
-  cvTitle: string
-}>()
+const props = defineProps({
+  cv: {
+    type: String,
+    required: true,
+  },
+  cvTitle: {
+    type: String,
+    required: true,
+  },
+})
 
 const emit = defineEmits(['close', 'minimize', 'maximize'])
 

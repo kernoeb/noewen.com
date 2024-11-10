@@ -1,17 +1,9 @@
 <script setup lang="ts">
+import type { Project } from '@/types'
+
 defineProps({
   project: {
-    type: Object as PropType<{
-      title: string
-      description: string
-      technologies: string[]
-      url: string
-      imgProps?: Record<string, unknown>
-      iconProps?: {
-        name: string
-        color: string
-      }
-    }>,
+    type: Object as PropType<Project>,
     required: true,
   },
 })

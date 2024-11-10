@@ -1,23 +1,26 @@
 <script setup lang="ts">
-const socialNetworks = [
+import type { Project, SocialNetwork } from '@/types'
+import { Technologies } from '@/types'
+
+const socialNetworks = ref<SocialNetwork[]>([
   {
     name: 'LinkedIn',
     icon: '$linkedin',
-    link: 'https://www.linkedin.com/in/noéwen-boisnard',
+    url: 'https://www.linkedin.com/in/noéwen-boisnard',
   },
   {
     name: 'GitHub',
     icon: '$github',
-    link: 'https://github.com/kernoeb',
+    url: 'https://github.com/kernoeb',
   },
   {
     name: 'Twitter/X',
     icon: '$x',
-    link: 'https://x.com/kernoeb',
+    url: 'https://x.com/kernoeb',
   },
-]
+])
 
-const projects = ref([
+const projects = ref<Project[]>([
   {
     title: 'PlanningSup',
     url: 'https://planningsup.app',
@@ -27,7 +30,7 @@ const projects = ref([
       height: 24,
     },
     description: 'Planning universitaire personnalisable pour les étudiants, hors connexion et sans publicité.',
-    technologies: ['Nuxt 2', 'Node.js'],
+    technologies: [Technologies.Nuxt2, Technologies.NodeJs],
   },
   {
     title: 'DrapeauDuJour',
@@ -38,7 +41,7 @@ const projects = ref([
       height: 20,
     },
     description: 'Chaque jour, un pays différent à découvrir avec son drapeau.',
-    technologies: ['Vue 3', 'Node.js'],
+    technologies: [Technologies.Vue3, Technologies.NodeJs],
   },
   {
     title: 'Docker Docsify PDF',
@@ -48,7 +51,7 @@ const projects = ref([
       color: 'red',
     },
     description: 'Générateur de PDF à partir d\'une documentation Docsify.',
-    technologies: ['Puppeteer', 'Node.js'],
+    technologies: [Technologies.NodeJs, Technologies.Puppeteer],
   },
   {
     title: 'Infinito',
@@ -59,7 +62,7 @@ const projects = ref([
       height: 20,
     },
     description: 'Ressources infinies pour tout le monde.',
-    technologies: ['Nuxt 3'],
+    technologies: [Technologies.Nuxt3],
   },
   {
     title: 'Partage',
@@ -69,7 +72,7 @@ const projects = ref([
       color: 'white',
     },
     description: 'Partage de texte dans le même réseau local.',
-    technologies: ['Vue 3', 'Rust', 'WebSockets'],
+    technologies: [Technologies.Vue3, Technologies.Rust, Technologies.WebSockets],
   },
 ])
 
@@ -111,7 +114,7 @@ onMounted(() => {
             variant="outlined"
             size="small"
             :icon="social.icon"
-            :href="social.link"
+            :href="social.url"
             target="_blank"
             class="mr-2"
             :title="social.name"
