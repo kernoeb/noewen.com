@@ -4,11 +4,11 @@
  * Automatically included in `./src/main.ts`
  */
 
-import vuetify from './vuetify'
-
 // Types
 import type { App } from 'vue'
+
 import { createPlausible } from 'v-plausible/vue'
+import vuetify from './vuetify'
 
 const domain = 'noewen.com'
 

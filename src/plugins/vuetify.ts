@@ -5,12 +5,12 @@
  */
 
 import { mdiBriefcaseAccountOutline, mdiCodeTags, mdiFilePdfBox, mdiGithub, mdiLinkedin, mdiMagnifyPlusOutline, mdiShareCircle, mdiTwitter } from '@mdi/js'
-// Styles
-import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
-import 'vuetify/styles'
-
 // Composables
 import { createVuetify } from 'vuetify'
+// Styles
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg'
+
+import 'vuetify/styles'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
