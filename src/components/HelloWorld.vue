@@ -94,39 +94,33 @@ onMounted(() => {
 <template>
   <v-container>
     <div class="d-flex flex-column align-center justify-center mt-14">
-      <div class="text-h2 mb-2" :class="{ floatAnimate }">
-        <div>Noéwen</div>
-        <div class="font-weight-bold">
-          BOISNARD
-        </div>
+      <div class="hero-name mb-3" :class="{ floatAnimate }">
+        <div class="first-name">Noéwen</div>
+        <div class="last-name">BOISNARD</div>
       </div>
 
-      <div class="text-h6 mb-4">
+      <div class="subtitle mb-5">
         Développeur fullstack
-        <v-icon icon="$code-tags" size="22" />
+        <v-icon icon="$code-tags" size="20" class="ml-1" />
       </div>
 
-      <div class="d-flex mb-10">
-        <div class="d-flex align-center justify-center">
-          <v-btn
-            v-for="social in socialNetworks"
-            :key="social.name"
-            variant="outlined"
-            size="small"
-            :icon="social.icon"
-            :href="social.url"
-            target="_blank"
-            class="mr-2"
-            :title="social.name"
-          />
-        </div>
+      <div class="d-flex mb-12 ga-3">
+        <v-btn
+          v-for="social in socialNetworks"
+          :key="social.name"
+          class="glass-btn social-btn"
+          size="small"
+          :icon="social.icon"
+          :href="social.url"
+          target="_blank"
+          :title="social.name"
+        />
       </div>
 
       <MyTerminal />
 
-      <div class="mb-2">
-        <div class="text-h5 text-center mb-3">
-          <v-icon icon="$briefcase-account-outline" class="mr-2 mt-n1" size="30" />
+      <div class="projects-section">
+        <div class="section-title mb-5">
           Mes projets
         </div>
         <v-container>
@@ -143,7 +137,7 @@ onMounted(() => {
 
 <style>
 .floatAnimate {
-  animation: float 2s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
@@ -151,10 +145,65 @@ onMounted(() => {
     transform: translatey(0px);
   }
   50% {
-    transform: translatey(-10px);
+    transform: translatey(-8px);
   }
   100% {
     transform: translatey(0px);
+  }
+}
+</style>
+
+<style scoped>
+.hero-name {
+  text-align: left;
+  line-height: 1.1;
+}
+
+.first-name {
+  font-size: 3.5rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -0.03em;
+}
+
+.last-name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+}
+
+.social-btn {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  color: white !important;
+}
+
+.projects-section {
+  width: 100%;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .first-name,
+  .last-name {
+    font-size: 2.5rem;
   }
 }
 </style>

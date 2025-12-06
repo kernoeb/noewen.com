@@ -40,79 +40,90 @@ onMounted(() => {
 </script>
 
 <template>
-  <v-hover>
-    <template #default="{ isHovering, props }">
-      <v-card
-        v-bind="props"
-        variant="tonal"
-        rounded="lg"
-        class="mb-10 terminal-card"
-        :elevation="isHovering ? 4 : 0"
-      >
-        <div>
-          <MacOSHeader header-title="Terminal" :title-class="{ 'text-grey-lighten-2': !!isHovering, 'text-grey-lighten-1': !isHovering }" />
-          <v-card-text style="font-family: 'Roboto Mono', monospace;">
-            <div class="mb-3">
-              <b>Salut ! Je suis Noéwen <span :class="{ 'hello-hand': !currentAsciiLoaderPart }">👋</span></b>
-            </div>
-
-            <div>
-              <span class="text-blue-lighten-3 font-weight-bold">~/Projects</span>
-              <br>
-              <span><span class="text-error font-weight-bold">❯</span> <span class="text-blue-lighten-3"><b>kernpm</b> create cv</span></span>
-              <br>
-              <span class="text-success">✔</span> Project name: <span class="text-grey-darken-1">…</span> <i>noewen_cv</i>
-              <br>
-              <span class="text-success">✔</span> Use TypeScript? <span class="text-grey-darken-1">…</span> No / <span class="text-blue-lighten-3 text-decoration-underline">Yes</span>
-              <br>
-              <span class="text-success">✔</span> Use Rust? <span class="text-grey-darken-1">…</span> No / <span class="text-blue-lighten-3 text-decoration-underline">Yes</span>
-              <br>
-              ◌ Preparing the CV...
-              <br>
-              ◌ Generating the CV...
-              <br>
-              <br>
-              <b>kernpm</b> generate <span class="text-blue-lighten-3">v1.0</span>
-              <br>
-              <span class="text-success">+</span> @kernoeb/skills<span class="text-grey-darken-1">@0.1.0</span>
-              <br>
-              <span class="text-success">+</span> @kernoeb/projects<span class="text-grey-darken-1">@1.6.1</span>
-              <br><br>
-              <template v-if="currentAsciiLoaderPart">
-                <span>{{ currentAsciiLoaderPart }}</span>
-              </template>
-              <template v-else>
-                <div>
-                  <span class="text-success">✔</span> CV generated successfully!
-                  <v-dialog v-model="dialogCV" :fullscreen="dialogCVFullscreen" width="800" height="90vh">
-                    <template #activator="{ props: dialogProps }">
-                      <v-btn variant="text" size="sm" v-bind="dialogProps" class="mr-1">
-                        <span class="text-none" style="text-decoration: underline;">
-                          Display the CV <v-icon icon="$magnify-plus-outline" />
-                        </span>
-                      </v-btn>
-                    </template>
-                    <CVObject
-                      cv-title="CV - BOISNARD Noéwen.pdf" cv="/CV_BOISNARD_Noewen.pdf"
-                      @close="dialogCV = false"
-                      @minimize="dialogCV = false"
-                      @maximize="dialogCVFullscreen = !dialogCVFullscreen"
-                    />
-                  </v-dialog>
-                  <span v-if="formattedDuration" class="text-grey-darken-1">[{{ formattedDuration }}]</span>
-                </div>
-              </template>
-            </div>
-          </v-card-text>
+  <v-card
+    class="mb-10 terminal-card"
+    rounded="lg"
+  >
+    <div>
+      <MacOSHeader header-title="Terminal" title-class="header-title-dim" />
+      <v-card-text class="terminal-content">
+        <div class="mb-3">
+          <b class="greeting">Salut ! Je suis Noéwen <span :class="{ 'hello-hand': !currentAsciiLoaderPart }">👋</span></b>
         </div>
-      </v-card>
-    </template>
-  </v-hover>
+
+        <div class="terminal-lines">
+          <span class="path">~/Projects</span>
+          <br>
+          <span><span class="prompt">❯</span> <span class="command">kernpm</span> create cv</span>
+          <br>
+          <span class="success">✔</span> Project name: <span class="dim">…</span> <i class="value">noewen_cv</i>
+          <br>
+          <span class="success">✔</span> Use TypeScript? <span class="dim">…</span> No / <span class="selected">Yes</span>
+          <br>
+          <span class="success">✔</span> Use Rust? <span class="dim">…</span> No / <span class="selected">Yes</span>
+          <br>
+          ◌ Preparing the CV...
+          <br>
+          ◌ Generating the CV...
+          <br>
+          <br>
+          <b>kernpm</b> generate <span class="version">v1.0</span>
+          <br>
+          <span class="success">+</span> @kernoeb/skills<span class="dim">@0.1.0</span>
+          <br>
+          <span class="success">+</span> @kernoeb/projects<span class="dim">@1.6.1</span>
+          <br><br>
+          <template v-if="currentAsciiLoaderPart">
+            <span class="loader">{{ currentAsciiLoaderPart }}</span>
+          </template>
+          <template v-else>
+            <div>
+              <span class="success">✔</span> CV generated successfully!
+              <v-dialog
+                    v-model="dialogCV"
+                    :fullscreen="dialogCVFullscreen"
+                    width="800"
+                    height="90vh"
+                    transition="dialog-transition"
+                  >
+                <template #activator="{ props: dialogProps }">
+                  <v-btn variant="text" size="sm" v-bind="dialogProps" class="ml-1 cv-link">
+                    <span class="text-none">
+                      Display the CV <v-icon icon="$magnify-plus-outline" size="16" />
+                    </span>
+                  </v-btn>
+                </template>
+                <CVObject
+                  cv-title="CV - BOISNARD Noéwen.pdf" cv="/CV_BOISNARD_Noewen.pdf"
+                  @close="dialogCV = false"
+                  @minimize="dialogCV = false"
+                  @maximize="dialogCVFullscreen = !dialogCVFullscreen"
+                />
+              </v-dialog>
+              <span v-if="formattedDuration" class="dim ml-1">[{{ formattedDuration }}]</span>
+            </div>
+          </template>
+        </div>
+      </v-card-text>
+    </div>
+  </v-card>
 </template>
 
-<style>
+<style scoped>
 .terminal-card {
   width: 600px;
+  max-width: 100%;
+  background: rgba(30, 15, 35, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset !important;
+}
+
+.terminal-card :deep(.header-title-dim) {
+  color: #565f89 !important;
 }
 
 @media (max-width: 600px) {
@@ -121,14 +132,82 @@ onMounted(() => {
   }
 }
 
+.terminal-content {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.85rem;
+  line-height: 1.5 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.greeting {
+  font-size: 0.95rem;
+  color: #fff;
+}
+
+.terminal-lines {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.path {
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+.prompt {
+  color: #fca5a5;
+  font-weight: 600;
+}
+
+.command {
+  color: #93c5fd;
+  font-weight: 500;
+}
+
+.success {
+  color: #86efac;
+}
+
+.dim {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.value {
+  color: #fff;
+}
+
+.selected {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.version {
+  color: #c4b5fd;
+}
+
+.loader {
+  color: #fcd34d;
+}
+
+.cv-link {
+  text-decoration: underline;
+  color: #93c5fd !important;
+  padding: 0 4px !important;
+  min-width: auto !important;
+  height: auto !important;
+}
+
+.cv-link:hover {
+  color: #bfdbfe !important;
+}
+
 .hello-hand {
-  display: inline-block; /* Ensures the rotation works correctly */
+  display: inline-block;
   animation: hello-hand 0.8s ease-in-out;
 }
 
 .hello-hand:hover {
   animation: hello-hand 0.8s ease-in-out infinite;
-  cursor: default
+  cursor: default;
 }
 
 @keyframes hello-hand {
@@ -147,5 +226,26 @@ onMounted(() => {
   100% {
     transform: rotate(0deg);
   }
+}
+</style>
+
+<style>
+/* macOS-like fast dialog transition */
+.dialog-transition-enter-active {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dialog-transition-leave-active {
+  transition: all 0.15s cubic-bezier(0.4, 0, 1, 1);
+}
+
+.dialog-transition-enter-from {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.dialog-transition-leave-to {
+  opacity: 0;
+  transform: scale(0.98);
 }
 </style>
