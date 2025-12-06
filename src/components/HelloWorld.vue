@@ -99,8 +99,12 @@ onMounted(() => {
   <v-container>
     <div class="d-flex flex-column align-center justify-center mt-14">
       <div class="hero-name mb-3" :class="{ floatAnimate }">
-        <div class="first-name">Noéwen</div>
-        <div class="last-name">BOISNARD</div>
+        <div class="first-name">
+          Noéwen
+        </div>
+        <div class="last-name">
+          BOISNARD
+        </div>
       </div>
 
       <div class="subtitle mb-5">
@@ -207,7 +211,7 @@ onMounted(() => {
 @media (max-width: 600px) {
   .first-name,
   .last-name {
-    font-size: 3rem;
+    font-size: 3.3rem;
   }
 }
 </style>
