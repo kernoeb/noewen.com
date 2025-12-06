@@ -78,12 +78,16 @@ const projects = ref<Project[]>([
 
 const floatAnimate = ref(false)
 onMounted(() => {
-  const root = document.documentElement
+  // Only enable mouse effect on non-touch devices
+  const isTouchDevice = window.matchMedia('(hover: none)').matches
 
-  document.addEventListener('mousemove', (evt) => {
-    root.style.setProperty('--mouse-x', String(evt.clientX / window.innerWidth))
-    root.style.setProperty('--mouse-y', String(evt.clientY / window.innerHeight))
-  })
+  if (!isTouchDevice) {
+    const root = document.documentElement
+    document.addEventListener('mousemove', (evt) => {
+      root.style.setProperty('--mouse-x', String(evt.clientX / window.innerWidth))
+      root.style.setProperty('--mouse-y', String(evt.clientY / window.innerHeight))
+    })
+  }
 
   setTimeout(() => {
     floatAnimate.value = true
