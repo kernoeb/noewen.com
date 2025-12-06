@@ -1,6 +1,13 @@
 <script setup lang="ts">
 const dialogCV = ref(false)
 const dialogCVFullscreen = ref(false)
+const supportsPdfViewer = ref(true)
+
+onMounted(() => {
+  // Check if browser supports inline PDF viewing
+  const hasPlugin = navigator.pdfViewerEnabled ?? (navigator.mimeTypes?.['application/pdf'] !== undefined)
+  supportsPdfViewer.value = hasPlugin
+})
 
 const asciiLoaderParts = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 const currentAsciiLoaderPart = ref(asciiLoaderParts[0])
@@ -79,27 +86,41 @@ onMounted(() => {
           <template v-else>
             <div>
               <span class="success">✔</span> CV generated successfully!
-              <v-dialog
-                    v-model="dialogCV"
-                    :fullscreen="dialogCVFullscreen"
-                    width="800"
-                    height="90vh"
-                    transition="dialog-transition"
-                  >
-                <template #activator="{ props: dialogProps }">
-                  <v-btn variant="text" size="sm" v-bind="dialogProps" class="ml-1 cv-link">
-                    <span class="text-none">
-                      Display the CV <v-icon icon="$magnify-plus-outline" size="16" />
-                    </span>
-                  </v-btn>
-                </template>
-                <CVObject
-                  cv-title="CV - BOISNARD Noéwen.pdf" cv="/CV_BOISNARD_Noewen.pdf"
-                  @close="dialogCV = false"
-                  @minimize="dialogCV = false"
-                  @maximize="dialogCVFullscreen = !dialogCVFullscreen"
-                />
-              </v-dialog>
+              <template v-if="supportsPdfViewer">
+                <v-dialog
+                  v-model="dialogCV"
+                  :fullscreen="dialogCVFullscreen"
+                  width="800"
+                  height="90vh"
+                  transition="dialog-transition"
+                >
+                  <template #activator="{ props: dialogProps }">
+                    <v-btn variant="text" size="sm" v-bind="dialogProps" class="ml-1 cv-link">
+                      <span class="text-none">
+                        Display the CV <v-icon icon="$magnify-plus-outline" size="16" />
+                      </span>
+                    </v-btn>
+                  </template>
+                  <CVObject
+                    cv-title="CV - BOISNARD Noéwen.pdf" cv="/CV_BOISNARD_Noewen.pdf"
+                    @close="dialogCV = false"
+                    @minimize="dialogCV = false"
+                    @maximize="dialogCVFullscreen = !dialogCVFullscreen"
+                  />
+                </v-dialog>
+              </template>
+              <v-btn
+                v-else
+                variant="text"
+                size="sm"
+                href="/CV_BOISNARD_Noewen.pdf"
+                target="_blank"
+                class="ml-1 cv-link"
+              >
+                <span class="text-none">
+                  Download the CV <v-icon icon="$magnify-plus-outline" size="16" />
+                </span>
+              </v-btn>
               <span v-if="formattedDuration" class="dim ml-1">[{{ formattedDuration }}]</span>
             </div>
           </template>
