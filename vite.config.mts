@@ -8,7 +8,6 @@ import VueRouter from 'unplugin-vue-router/vite'
 // Utilities
 import { defineConfig } from 'vite'
 
-import Layouts from 'vite-plugin-vue-layouts'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://vitejs.dev/config/
@@ -16,21 +15,10 @@ export default defineConfig({
   ssr: {
     noExternal: ['vuetify'],
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        api: 'modern',
-      },
-      sass: {
-        api: 'modern',
-      },
-    },
-  },
   plugins: [
     VueRouter({
       dts: 'src/typed-router.d.ts',
     }),
-    Layouts(),
     AutoImport({
       imports: [
         'vue',
