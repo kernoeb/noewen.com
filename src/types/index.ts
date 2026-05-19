@@ -1,12 +1,14 @@
 type IconName = `$${string}`
 
 export enum Technologies {
-  Nuxt2 = 'Nuxt 2',
-  Nuxt3 = 'Nuxt 3',
   Vue3 = 'Vue 3',
+  Vue = 'Vue.js',
+  React = 'React',
+  Tauri = 'Tauri 2',
+  Bun = 'Bun',
   NodeJs = 'Node.js',
-  Puppeteer = 'Puppeteer',
   Rust = 'Rust',
+  Kotlin = 'Kotlin',
   WebSockets = 'WebSockets',
 }
 
@@ -15,11 +17,7 @@ export interface Project {
   description: string
   technologies: Technologies[]
   url: `https://${string}`
-  imgProps?: Record<string, unknown>
-  iconProps?: {
-    name: IconName
-    color: string
-  }
+  imgProps: Record<string, unknown>
 }
 
 export interface SocialNetwork {

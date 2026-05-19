@@ -3,9 +3,9 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "vite --port 8080",
+    "dev": "bun --bun vite --port 8080",
     "typecheck": "vue-tsc --noEmit",
-    "build": "vite-ssg build",
+    "build": "bun --bun vite-ssg build",
     "preview": "vite preview",
     "lint": "eslint ."
   },

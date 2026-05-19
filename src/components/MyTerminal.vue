@@ -135,8 +135,8 @@ onMounted(() => {
   width: 600px;
   max-width: 100%;
   background: rgba(30, 15, 35, 0.75) !important;
-  backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   box-shadow:
     0 10px 40px rgba(0, 0, 0, 0.4),

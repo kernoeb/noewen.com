@@ -19,8 +19,7 @@ defineProps({
     <v-card-title class="pt-5 pb-2">
       <div class="d-flex align-center">
         <div class="icon-wrapper mr-3">
-          <v-img v-if="project.imgProps" :alt="project.title" inline v-bind="project.imgProps" />
-          <v-icon v-else-if="project.iconProps" :icon="project.iconProps.name" :color="project.iconProps.color" size="22" />
+          <v-img :alt="project.title" inline v-bind="project.imgProps" />
         </div>
         <span class="project-title">{{ project.title }}</span>
       </div>
