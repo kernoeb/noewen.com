@@ -5,7 +5,7 @@ const supportsPdfViewer = ref(true)
 
 onMounted(() => {
   // Check if browser supports inline PDF viewing
-  const hasPlugin = navigator.pdfViewerEnabled ?? (navigator.mimeTypes?.['application/pdf'] !== undefined)
+  const hasPlugin = navigator.pdfViewerEnabled ?? (navigator.mimeTypes?.namedItem('application/pdf') !== null)
   supportsPdfViewer.value = hasPlugin
 })
 
@@ -215,6 +215,9 @@ onMounted(() => {
   padding: 0 4px !important;
   min-width: auto !important;
   height: auto !important;
+  /* VBtn dropped its uppercase-tuned letter-spacing in v4; keep the wider
+     tracking so the inline link still reads as terminal/console text. */
+  letter-spacing: 0.09em;
 }
 
 .cv-link:hover {

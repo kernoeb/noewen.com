@@ -4,11 +4,11 @@ import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Fonts from 'unplugin-fonts/vite'
 import Components from 'unplugin-vue-components/vite'
-import VueRouter from 'unplugin-vue-router/vite'
 // Utilities
 import { defineConfig } from 'vite'
-
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+
+import VueRouter from 'vue-router/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({

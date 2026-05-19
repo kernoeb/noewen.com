@@ -4,6 +4,20 @@
  * Configures SASS variables and Vuetify overwrites
  */
 
+// Keep Vuetify 3's grid breakpoints so the existing responsive layout
+// (`md=4`, `xl=2` on project cards) keeps activating at the same widths;
+// `$container-max-widths` is derived from these and updates automatically.
+@forward 'vuetify/settings' with (
+  $grid-breakpoints: (
+    'xs': 0,
+    'sm': 600px,
+    'md': 960px,
+    'lg': 1280px,
+    'xl': 1920px,
+    'xxl': 2560px,
+  )
+);
+
 // Font applied globally
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
