@@ -1,2 +1,6 @@
 [build]
 command = "bun run build"
+
+[build.environment]
+# Bun.Image (used by vite-plugins/remote-icons.ts) requires >=1.3.14
+BUN_VERSION = "1.3.14"
