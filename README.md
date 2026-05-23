@@ -12,6 +12,7 @@ $ bun install
 
 # serve with hot reload
 $ bun run dev
+```
 
 ### Building for Production
 
