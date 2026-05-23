@@ -17,8 +17,6 @@ declare module 'vue' {
     MacOSHeader: typeof import('./components/MacOSHeader.vue')['default']
     MyTerminal: typeof import('./components/MyTerminal.vue')['default']
     ProjectCard: typeof import('./components/ProjectCard.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
     TerminalBootSession: typeof import('./components/TerminalBootSession.vue')['default']
   }
 }

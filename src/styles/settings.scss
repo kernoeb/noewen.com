@@ -21,6 +21,14 @@
 // Font applied globally
 body {
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  // Chrome's scroll-anchoring fires on a sub-pixel layout shift during
+  // Vuetify's runtime theme-stylesheet injection (the `<style id=
+  // "vuetify-theme-stylesheet">` block + the Inter font swap re-flow the
+  // hero text by a fraction of a pixel). Without this, scrollY drifts up
+  // by 4–8px on every reload as the browser tries to keep the previously-
+  // visible region pinned. The page has no above-the-fold dynamic content
+  // that genuinely needs anchoring, so we opt out globally.
+  overflow-anchor: none;
 }
 
 // Glassmorphism utilities

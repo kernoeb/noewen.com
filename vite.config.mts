@@ -9,7 +9,6 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import VueRouter from 'vue-router/vite'
 import remoteIcons, { androidAdaptiveIcon, mdiAppIcon } from './vite-plugins/remote-icons'
 
 // https://vitejs.dev/config/
@@ -49,15 +48,9 @@ export default defineConfig({
         },
       ],
     }),
-    VueRouter({
-      dts: 'src/typed-router.d.ts',
-    }),
     AutoImport({
       imports: [
         'vue',
-        {
-          'vue-router/auto': ['useRoute', 'useRouter'],
-        },
       ],
       dts: 'src/auto-imports.d.ts',
       eslintrc: {
@@ -67,6 +60,11 @@ export default defineConfig({
     }),
     Components({
       dts: 'src/components.d.ts',
+      // unplugin-vue-components auto-augments globals with RouterLink/
+      // RouterView whenever vue-router is present in node_modules (still
+      // the case here via vite-ssg's peerDep). Opt out — we don't use
+      // either component.
+      types: [],
     }),
     Vue({
       template: { transformAssetUrls },
