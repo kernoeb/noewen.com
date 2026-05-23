@@ -8,6 +8,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  fullscreen: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits(['close', 'minimize', 'maximize'])
@@ -24,8 +28,14 @@ function onPdfLoad() {
 </script>
 
 <template>
-  <v-card class="cv-card glass-card" rounded="xl">
-    <MacOSHeader :header-title="cvTitle" @close="emit('close')" @minimize="emit('minimize')" @maximize="emit('maximize')" />
+  <v-card class="cv-card glass-card" :class="{ 'is-fullscreen': fullscreen }" rounded="xl">
+    <MacOSHeader
+      :header-title="cvTitle"
+      :fullscreen="fullscreen"
+      @close="emit('close')"
+      @minimize="emit('minimize')"
+      @maximize="emit('maximize')"
+    />
 
     <div v-if="isLoading" class="loading-container">
       <v-progress-circular indeterminate color="white" size="32" width="3" />
@@ -58,6 +68,14 @@ function onPdfLoad() {
 <style scoped>
 .cv-card {
   overflow: hidden;
+}
+
+/* In fullscreen the card already fills the viewport, so the glass-card
+   hover-lift (translateY -2px) just nudges everything off the edge for
+   no benefit. Neutralize transform + hover-driven changes. */
+.cv-card.is-fullscreen,
+.cv-card.is-fullscreen:hover {
+  transform: none !important;
 }
 
 .loading-container {
