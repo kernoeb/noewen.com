@@ -112,6 +112,7 @@ onBeforeUnmount(() => {
   padding: 0 4px !important;
   min-width: auto !important;
   height: auto !important;
+  font-size: inherit;
   line-height: inherit !important;
   vertical-align: baseline !important;
   /* VBtn dropped its uppercase-tuned letter-spacing in v4; keep the wider

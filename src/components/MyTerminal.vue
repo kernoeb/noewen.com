@@ -330,7 +330,7 @@ async function measureLockedHeight() {
     const previousInline = el.style.height
     el.style.height = ''
     await nextTick()
-    lockedHeight.value = el.scrollHeight
+    lockedHeight.value = el.getBoundingClientRect().height
     el.style.height = previousInline
   } finally {
     measuring = false
@@ -343,7 +343,7 @@ watch(isBooting, async (booting) => {
   focusInput()
   if (lockedHeight.value === null) {
     const el = getScrollEl()
-    if (el) lockedHeight.value = el.scrollHeight
+    if (el) lockedHeight.value = el.getBoundingClientRect().height
   }
 })
 
