@@ -3,12 +3,12 @@ import { mdiShareCircle } from '@mdi/js'
 import Vue from '@vitejs/plugin-vue'
 // Plugins
 import AutoImport from 'unplugin-auto-import/vite'
-import Fonts from 'unplugin-fonts/vite'
 import Components from 'unplugin-vue-components/vite'
 // Utilities
 import { defineConfig } from 'vite'
 
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import googleFonts from './vite-plugins/google-fonts'
 import remoteIcons, { androidAdaptiveIcon, mdiAppIcon } from './vite-plugins/remote-icons'
 
 // https://vitejs.dev/config/
@@ -76,19 +76,19 @@ export default defineConfig({
         configFile: 'src/styles/settings.scss',
       },
     }),
-    Fonts({
-      google: {
-        families: [
-          {
-            name: 'Inter',
-            styles: 'wght@300;400;500;600;700',
-          },
-          {
-            name: 'JetBrains Mono',
-            styles: 'wght@400;500;600',
-          },
-        ],
-      },
+    googleFonts({
+      families: [
+        {
+          name: 'Inter',
+          weights: '300..700',
+          fallback: { font: 'Arial', sizeAdjust: '109.38%', ascentOverride: '88.57%', descentOverride: '22.05%' },
+        },
+        {
+          name: 'JetBrains Mono',
+          weights: '400..600',
+          fallback: { font: 'Courier New', sizeAdjust: '99.98%', ascentOverride: '102.02%', descentOverride: '30.01%' },
+        },
+      ],
     }),
   ],
   define: { 'process.env': {} },

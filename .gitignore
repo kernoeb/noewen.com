@@ -1,7 +1,9 @@
 .DS_Store
+.sc
 node_modules
 /dist
 /public/icons
+/public/fonts
 
 # local env files
 .env.local

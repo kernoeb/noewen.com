@@ -555,7 +555,7 @@ onBeforeUnmount(() => {
 }
 
 .terminal-content {
-  font-family: 'JetBrains Mono', monospace !important;
+  font-family: 'JetBrains Mono', 'JetBrains Mono Fallback', monospace !important;
   font-size: 0.85rem;
   line-height: 1.5 !important;
   color: rgba(255, 255, 255, 0.9) !important;

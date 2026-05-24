@@ -10,6 +10,8 @@ import { registerPlugins } from '@/plugins'
 // Components
 import App from './App.vue'
 
+import 'virtual:google-fonts'
+
 export const createApp = ViteSSG(App, ({ app }) => {
   registerPlugins(app)
 })
