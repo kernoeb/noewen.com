@@ -3,4 +3,4 @@
 minimumReleaseAge = 259200
 # beasties 0.4.3 carries our own merged fix (danielroe/beasties#323); exempt it
 # from the cooldown so we can pick up the nested-@layer compress fix immediately.
-minimumReleaseAgeExcludes = ["beasties"]
+minimumReleaseAgeExcludes = [ "beasties" ]
