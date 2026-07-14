@@ -16,8 +16,6 @@ export default defineConfig({
   ssr: {
     noExternal: ['vuetify'],
   },
-  // Beasties' compress mangles Vuetify 4's nested `@layer` (danielroe/beasties#322).
-  ssgOptions: { beastiesOptions: { compress: false } },
   plugins: [
     remoteIcons({
       rasterize: { format: 'webp', size: 64 },

@@ -1,0 +1,6 @@
+[install]
+# 3-day cooldown to blunt supply-chain attacks (mirrors global ~/.bunfig.toml).
+minimumReleaseAge = 259200
+# beasties 0.4.3 carries our own merged fix (danielroe/beasties#323); exempt it
+# from the cooldown so we can pick up the nested-@layer compress fix immediately.
+minimumReleaseAgeExcludes = ["beasties"]
